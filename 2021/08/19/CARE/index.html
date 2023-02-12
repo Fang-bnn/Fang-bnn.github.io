@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"Trebuchet","show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Title：Content-aware image restoration: pushing the limits of fluorescence microscopy内容感知图像重建（基于内容的图像恢复，为什么是内容感知？）：推动了荧光显微镜的极限（什么极限？）Highlights  问题指向性明确，很直接地针对多个生物问题设计网络和算法，不按照常规套路进行（固定细胞-活细胞-生物学效应） 内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CARE">
+<meta property="og:url" content="http://example.com/2021/08/19/CARE/index.html">
+<meta property="og:site_name" content="生产队的猪窝">
+<meta property="og:description" content="Title：Content-aware image restoration: pushing the limits of fluorescence microscopy内容感知图像重建（基于内容的图像恢复，为什么是内容感知？）：推动了荧光显微镜的极限（什么极限？）Highlights  问题指向性明确，很直接地针对多个生物问题设计网络和算法，不按照常规套路进行（固定细胞-活细胞-生物学效应） 内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1b.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/Fig1cd.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1d&#39;.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1e.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2a.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2b.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_Fwing.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2d.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF12.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF16.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF15.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F4b.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F4c.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF23.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF24.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF25.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF26.png">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF28.png">
+<meta property="article:published_time" content="2021-08-19T01:18:39.000Z">
+<meta property="article:modified_time" content="2021-08-24T03:15:02.457Z">
+<meta property="article:author" content="生产队的猪">
+<meta property="article:tag" content="Deep learning">
+<meta property="article:tag" content="Microscope">
+<meta property="article:tag" content="Super resolution">
+<meta property="article:tag" content="Article">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1b.png">
+
+<link rel="canonical" href="http://example.com/2021/08/19/CARE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CARE | 生产队的猪窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">生产队的猪窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/19/CARE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CARE
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-19 01:18:39" itemprop="dateCreated datePublished" datetime="2021-08-19T01:18:39Z">2021-08-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-24 03:15:02" itemprop="dateModified" datetime="2021-08-24T03:15:02Z">2021-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Article-translation/" itemprop="url" rel="index"><span itemprop="name">Article translation</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Title：Content-aware-image-restoration-pushing-the-limits-of-fluorescence-microscopy"><a href="#Title：Content-aware-image-restoration-pushing-the-limits-of-fluorescence-microscopy" class="headerlink" title="Title：Content-aware image restoration: pushing the limits of fluorescence microscopy"></a>Title：Content-aware image restoration: pushing the limits of fluorescence microscopy</h1><p>内容感知图像重建（基于内容的图像恢复，为什么是内容感知？）：推动了荧光显微镜的极限（什么极限？）<br>Highlights</p>
+<ol>
+<li>问题指向性明确，很直接地针对多个生物问题设计网络和算法，不按照常规套路进行（固定细胞-活细胞-生物学效应）</li>
+<li>内容丰富，包含了去噪、投影、各向同性重建（三维数据）、超分辨重建、概率生成网络等几乎所有荧光显微图像重建可以包含地内容</li>
+<li>评价方式丰富，不仅仅局限于常规地MSE等损失函数或是结构相似度方法，甚至在网络后又进行了分割和追踪等操作，用分割和追踪地效果评价网络地效果</li>
+<li>新建了一套用于评估重建图像可靠性地评价算法</li>
+<li>基于一般机器学习中地概念，将其适用于本文面对的科研问题，开发了新的方法。<span id="more"></span>
+</li>
+</ol>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p><span style="background-color: #c0ebd7">Fluorescence microscopy is a key driver of discoveries in the life sciences</span>: 荧光显微镜在生命科学领域的新发现中起到关键性的推动作用。</p>
+<p><span style="background-color: #c0ebd7">with observable phenomena being limited by the optics of the microscope, the chemistry of the fluorophores, and the maximum photon exposure tolerated by the sample.</span>：但同时又受到显微镜光学特性、荧光发色团的化学性质和样品曝光时间的限制</p>
+<p><span style="background-color: #c0ebd7">These limits necessitate trade-offs between imaging speed, spatial resolution, light exposure, and imaging depth</span>: 这些限制促使我们需要在成像速度，空间分辨率，曝光和成像深度上进行权衡。</p>
+<p><span style="background-color: #c0ebd7">In this work we show how content-aware image restoration based on deep learning extends the range of biological phenomena observable by microscopy</span>: 在这一工作中，我们展示了基于深度学习的内容感知图像恢复技术是如何延展生物显微成像的范围的</p>
+<p><span style="background-color: #c0ebd7">We demonstrate on eight concrete examples how microscopy images can be restored even if 60-fold fewer photons are used during acquisition</span>: 我们用8个具体的例子来说明甚至小于60倍光照强度获取的图像仍然可以用于显微图像的重建</p>
+<p><span style="background-color: #c0ebd7">how near isotropic resolution can be achieved with up to tenfold under-sampling along the axial direction</span>：如何在沿轴向进行多达十倍的欠采样下，可以达到向同性的分辨率</p>
+<p><span style="background-color: #c0ebd7">and how tubular and granular structures smaller than the diffraction limit can be resolved at 20-times-higher frame rates compared to state-of-the-art methods</span>：以及较最先进方法的20倍采样下，对于管状和颗粒状结构，如何实现突破衍射极限的成像</p>
+<p><span style="background-color: #c0ebd7">All developed image restoration methods are freely available as open source software in Python, FIJI, and KNIME</span>：所有研发的图像恢复方法都可以通过python，fiji和KNIME等开源途径获取。</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><span style="background-color: #c0ebd7">Fluorescence microscopy is an indispensable tool in the life sciences for investigating the spatio-temporal dynamics of cells, tissues, and developing organisms. Recent advances such as light-sheet microscopy structured illumination microscopy, and super-resolution microscopy, enable time-resolved volumetric imaging of biological processes within cells at high resolution</span>: 荧光显微镜是生命科学中一种必不可少的工具，用于探索细胞的时空动态以及发育过程中的组织，比如说最近的进展：光片显微镜、结构光显微镜和超分辨显微镜，使得我们能够以高分辨率对细胞内的生命过程进行一定时间分辨率的三维体积成像。</p>
+<p><span style="background-color: #c0ebd7">The quality at which these processes can be faithfully recorded, however, is determined not only by the spatial resolution of the optical device used, but also by the desired temporal resolution, the total duration of an experiment, the required imaging depth, the achievable fluorophore density, bleaching, and photo-toxicity</span>: 而决定这一过程能否被真实地记录的，不仅仅与光学设备的空间分辨率有关，而且与要求的空间分辨率、总的持续实验时间、要求的成像深度、可达到的荧光强度、漂白和光毒性有关。</p>
+<p><span style="background-color: #c0ebd7">These aspects cannot all be optimized at the same time—trade-offs must be made, for example, by sacrificing signal-to-noise ratio (SNR) by reducing exposure time to gain imaging speed</span>: 这些方面无法同时被优化，必须要做出权衡，比如通过牺牲信噪比以获取较高的成像速度。</p>
+<p><span style="background-color: #c0ebd7">Such trade-offs are often depicted by a design space that has resolution, speed, light exposure, and imaging depth as its dimensions (Fig. 1a), with the volume being limited by the maximal photon budget compatible with sample health</span>: 这样的权衡可以用一个空间来描述，这个空间有分辨率、成像速度、曝光以及成像深度几个维度组成，他们被样品所能承受的最大光照强度所限制</p>
+<hr>
+<p><span style="background-color: #c0ebd7">These trade-offs can be addressed through optimization of the microscopy hardware, yet there are physical limits that cannot easily be overcome</span>: 这些权衡可以通过优化显微镜的硬件结构来解决，但是有些物理上的极限无法被轻易地突破。</p>
+<p><span style="background-color: #c0ebd7">Therefore, computational procedures to improve the quality of acquired microscopy images are becoming increasingly important. Super-resolution microscopy, deconvolution, surface projection algorithms, and denoising methods are examples of sophisticated image restoration algorithms that can push the limit of the design space, and thus allow the recovery of important biological information that would be inaccessible by imaging along </span>: 因此，通过计算过程来提高所需的显微成像质量变得越来越重要。诞生了一些复杂的图像重建方法，他们够突破设计空间限制，从而能够恢复无法通过单独成像获得的重要生物学信息，比如超分辨显微镜、下采样、表面投影算法、去噪算法等。</p>
+<p><span style="background-color: #c0ebd7">However, most common image restoration problems have multiple possible solutions, and require additional assumptions to select one solution as the final restoration</span>: 然而，多数普通的图像重建算法存在多种可能的解，而且需要额外的前提建设并选择一种作为最终的重建方法。</p>
+<p><span style="background-color: #c0ebd7">These assumptions are typically general, for example, requiring a certain level of smoothness of the restored image, and therefore are not dependent on the specific content of the images to be restored</span>: 这些假设是比较通用的，比如说重建的图像需要一定程度的平滑，因此不依赖于图像所包含的特定内容。</p>
+<p><span style="background-color: #c0ebd7">Intuitively, a method that leverages available knowledge about the data at hand ought to yield superior restoration results.</span>: 直观的说，如果有能够利用手头的数据相关信息的方法，就能够产生比较好的重建结果。</p>
+<p><span style="background-color: #c0ebd7">Deep learning is such a method, because it can learn to perform complex tasks on specific data by employing multilayered artificial neural networks trained on a large body of adequately annotated example data</span>：深度学习就是这样一种方法，因为他能够通过多层人工神经网络来训练大量充分的标记数据集，从而完成和特定数据相关的复杂的任务。</p>
+<p><span style="background-color: #c0ebd7">In biology, deep learning methods have, for instance, been applied to the automatic extraction of connectomes from large electron microscopy data, for classification of image based high-content screens, fluorescence signal prediction from label-free images, resolution enhancement in histopathology, or for single-molecule localization in super-resolution microscopy</span>: 在生物中，深度学习被应用于诸如在大量电子显微镜数据中提取突触结构等包含大量内容的图片分类任务，无标注图片的荧光信号预测、组织切片分辨率的提高或是超分辨显微镜中的单分子定位。</p>
+<p><span style="background-color: #c0ebd7">However, the direct application of deep learning methods to image restoration tasks in fluorescence microscopy is complicated by the absence of adequate training data and the fact that it is impossible to generate them manually</span>：然而，深度学习在图像恢复中的直接应用被缺乏足够的训练数据以及他们无法人工生成而复杂化。</p>
+<p><span style="background-color: #c0ebd7">We present a solution to the problem of missing training data for deep learning in fluorescence microscopy by developing strategies to generate such data.</span>：通过生成类似的数据的方法，我们展示了一种方法来解决深度学习中数据缺失带来的问题。</p>
+<p><span style="background-color: #c0ebd7"> This enables us to apply common convolutional neural network architectures (U-Nets34) to image restoration tasks, such as image denoising, surface projection, recovery of isotropic resolution, and the restoration of sub-diffraction structures</span>: 这使得我们能够利用普通的卷积神经网络结构（Unet）来实现图像恢复任务，如图像去噪、表面投影、分辨率各向同性恢复和亚分辨结构的重建</p>
+<p><span style="background-color: #c0ebd7">We show, in a variety of imaging scenarios, that trained content-aware image restoration (CARE) networks produce results that were previously unobtainable</span>: 我们展现了我们训练的内容感知图像重建网络在多种成像情境下都能够达到之前无法获得的结果。</p>
+<p><span style="background-color: #c0ebd7">This means that the application of CARE to biological images transcends the limitations of the design space, pushing the limits of the possible in fluorescence microscopy through machine-learned image computation.</span>: 这意味着CARE在生物成像领域的应用突破了设计空间的限制，通过机器学习计算方法推动荧光显微镜的成像极限。</p>
+<h1 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h1><p><span style="background-color: #c0ebd7">Images with a low SNR are difficult to analyze in fluorescence microscopy. </span>: 低信噪比的荧光显微图像往往难以分析。</p>
+<p><span style="background-color: #c0ebd7">One way to improve SNR is to increase laser power or exposure times, which is usually detrimental to the sample, limiting the possible duration of the recording and introducing artifacts due to photo damage</span>: 提高信噪比的方法之一是增强激光能量或是曝光时间，但这往往对样品是有害的，因此限制了曝光持续的事件，而过长的曝光时间也往往会导致光损伤引起的伪影</p>
+<p><span style='background-color: #c0ebd7'>An alternative solution is to image at low SNR, and later<br>to computationally restore acquired images</span>: 另一种可行的解决方法是成像较低的信噪比图像，通过计算的方法重建需要获取的图像。</p>
+<p><span style='background-color: #c0ebd7'>Classical approaches, such as non-local-means denoising, can in principle achieve this, but without leveraging available knowledge about the data at hand.</span>: 经典的方法有<code>non-local-means denoising</code>，理论上能够实现，但是他并没有利用后验数据。</p>
+<h2 id="Image-restoration-with-physically-acquired-training-data"><a href="#Image-restoration-with-physically-acquired-training-data" class="headerlink" title="Image restoration with physically acquired training data"></a>Image restoration with physically acquired training data</h2><blockquote>
+<p>利用实际获得训练数据进行图像恢复</p>
+</blockquote>
+<p><span style='background-color: #c0ebd7'>To demonstrate the power of machine learning in biology, we developed CARE.</span>: 为了说明机器学习在生物学中的作用，我们开发了CARE</p>
+<p><span style='background-color: #c0ebd7'>We first demonstrate the utility of CARE on microscopy acquisitions of the flatworm Schmidtea mediterranea, a model organism for studying tissue regeneration.</span>: 我们首先在一种组织再生的模式生物——地中海扁虫中证明了CARE在显微图像获取中的作用</p>
+<p><span style='background-color: #c0ebd7'>This organism is exceptionally sensitive to even moderate amounts of laser light, exhibiting muscle flinching at desirable illumination levels even when anesthetized</span>: 这种生物对极其微量的激光仍然格外敏感，会在激光找到的位置出现肌肉抽搐的现象，甚至在被麻醉时也存在。</p>
+<p><span style='background-color: #c0ebd7'>Using a laser power that reduces flinching to an acceptable level results in images with such low SNR that they are impossible to interpret directly</span>: 既要实现减少的肌肉抽搐现象，又要实现较低的信噪比，是不可能的。</p>
+<p><span style='background-color: #c0ebd7'>Consequently, live imaging of S.mediterranea has thus far been intractable</span>: 因此，迄今为止，这种扁虫的实时成像一直是非常棘手的问题。</p>
+<p><span style='background-color: #c0ebd7'>To address this problem with CARE, we imaged fixed worm samples at serveral laser intensities. We acquired well-registered pairs of images, a low-SNR image at laser power compatible with live imaging, and a high-SNR image, serving as a ground truth.</span>: 为了用CARE解决这一问题，我们用固定的扁虫样品进行了荧光成像。我们需要较好地一一匹配的图像，分别是适于活体成像，由低能激光激发的低信噪比成像，以及由高能激光激发的高信噪比图像，用作金标准。</p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1b.png" alt="Fig1b"><br>$x_i$是较差光照条件下的数据，$y_i$是同一样品的相同视野较好光照条件下的数据，用这个数据对进行训练。最后应用在数据集上。</p>
+<p><span style='background-color: #c0ebd7'>We then trained a convolutional neural network and applied the trained network to previously unseen live-imaging data of S. mediterranea</span>: 我们随后训练了卷积神经网络，并且将其用在了之前无法直接观察到的扁虫实时成像数据。</p>
+<p><span style='background-color: #c0ebd7'>We used networks of moderate size(~10<sup>6</sup> parameters) based on the U-Net architectrue, together with a per-pixel similarity loss, for example absolute error.</span>: 我们使用了基于Unet 的较小的网络，以及用了单像素相似度损失作为损失函数(<mark>Supplementary Notes1 and 2</mark>)，比如说绝对误差。</p>
+<p><span style='background-color: #c0ebd7'>We consistently obtained high-quality restorations, even if the SNR of the images was very low, for example, being acquired with a 60-fold reduced light dosage.</span>: 我们在固定条件下获得高质量的图像，尽管他的信噪比比较低，比如在低于60倍光照强度下获取的样本。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/Fig1cd.png" alt="Fig1cd"><br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1d&#39;.png" alt="CARE_F1d&#39;"></p>
+<p>NML即为之前提到的<code>non-local-means denoising</code>的方法。C1，C2，C3分别是较低激光强度较长曝光时长、较低曝光强度较短曝光时长和很低激光强度较短曝光时长下的数据。由d图右侧的box-dot plots可以看到，Network较NLM在他的评价体系下效果更好，虽然无论那种方法，他们的成像水平都随着环境变差变更差，但是很明显Network相对于NLM更加具有鲁棒性。</p>
+<p><span style='background-color: #c0ebd7'>To quantify this observation, we measured the restoration error between prediction and groundtruth images for three different exposure and laser-power conditions</span>: 为了定量化观察结果，我们测量了在三种不同的测量环境下的预测和金标准的误差。</p>
+<p><span style='background-color: #c0ebd7'>Both the normalized root-mean-square error (NRMSE) and the structural similarity index improved considerably compared with results obtained by several potent classical denoising methods</span>: 无论是归一化的均方根误差还是结构相似度，网络获得的重建结果都比传统的去噪方法好</p>
+<p><span style='background-color: #c0ebd7'>We further observed that even a small number of training images (for example, 200 patches of size 64×64×16) led to<br>an acceptable image restoration quality</span>: 我们进一步观察了小数据量的训练（比如说200个64×64×16的数据量），效果可以接受(<mark>Supplementary Fig6</mark>)</p>
+<p><span style='background-color: #c0ebd7'>Moreover, while training a CARE network can take several hours, the restoration time for a volume of size 1,024×1,024×100 was less than 20 s on a single graphics processing unit.</span>: 另外，训练一个网络需要花费几个小时，但是在单个计算单元上重1,024×1,024×100的数据量只需要少于20s。</p>
+<p><span style='background-color: #c0ebd7'>In this case, CARE networks are able to take input data that are unusable for biological investigations and turn them into high-quality timelapse data, providing a practical framework for live-cell imaging of S. mediterranea.</span>: 在这个案例中，CARE网络能够将生物学研究中哪些不可见的数据转化为高质量的时间序列数据，为扁虫的活细胞成像提供了一个实际可行的框架。</p>
+<hr>
+<p><span style='background-color: #c0ebd7'>We next asked whether CARE improves common downstream analysis tasks in live-cell imaging, such as nuclei segmentation. We used confocal microscopy recordings of developing Tribolium castaneum (red flour beetle) embryos, and as before trained a network on image pairs of samples acquired at high and low laser powers </span>: 随后，我们想知道CARE能否提高一般的下游数据分析质量，比如说核分割。我们使用共聚焦显微镜记录了正在发育的红粉甲虫胚胎，并且像之前那样训练了成对的数据集。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F1e.png" alt="CARE_F1e"></p>
+<p><span style='background-color: #c0ebd7'>The resulting CARE network performed well even on extremely noisy, previously unseen live-imaging data </span>: 最后的CARE网络在大量被噪声淹没的数据中仍然有较好的表现</p>
+<p><span style='background-color: #c0ebd7'>To test the benefits of CARE for segmentation, we applied a simple nuclei segmentation pipeline to raw and restored image stacks of T. castaneum. The results show that, compared to manual expert segmentation, the segmentation accuracy improved from SEG=0.47 on the classically denoised raw stacks to SEG=0.65 on the CARE restored volumes</span>: 为了测试CARE对分割质量的提升，我们对原始数据和重建数据进行了核分割（基于阈值的核分割算法）。结果表明，和人工分割相比，分割的精准度从原始数据的SEG=0.47提高到0.65（<a target="_blank" rel="noopener" href="https://www.nature.com/articles/nmeth.4473">SEG指的是分割结果和金标准之间重叠的平均大小</a>）<br><a target="_blank" rel="noopener" href="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF8.png">具体分割方法和效果</a></p>
+<p><span style='background-color: #c0ebd7'>Since this segmentation performance is achieved at substantially reduced laser power, the gained photon budget can now be spent on the imaging speed and light-exposure dimensions of the design space.</span>: 因为上述分割是在相对较弱的光照条件下进行的，所以这一部分光强的补偿可以用于提高成像速度和曝光时间。</p>
+<p><span style='background-color: #c0ebd7'>This means that Tribolium embryos, when restored with CARE, can be imaged for longer and at higher frame rates, thus enabling improved tracking of cell lineages.</span>这意味着当我们用CARE实现对甲虫胚胎更高帧率和曝光时间的成像，从而能够改进对细胞系的跟踪。</p>
+<p><span style='background-color: #c0ebd7'>Encouraged by the performance of CARE on two independent denoising tasks, we asked whether such networks can also solve more complex, composite tasks. </span>受到CARE在上述两种去噪任务中表现的鼓舞，我们尝试更加复杂的任务。</p>
+<p><span style='background-color: #c0ebd7'> In biology it is often useful to image<br>a three-dimensional (3D) volume and project it to a two-dimensional (2D) surface for analysis, such as when studying cell behavior in developing epithelia of the fruit fly Drosophila melanogaster</span>: 在生物学中，对样本进行三维成像后，进行二维投影并分析，比如对果蝇上皮细胞发育过程中的细胞行为的研究。</p>
+<p><span style='background-color: #c0ebd7'>Also, in this context, it is beneficial to optimize the trade-off between laser power and imaging speed, usually resulting in rather low-SNR images. </span>: 同时，在这个例子中，我们仍然需要权衡激光强度和成像速度之间的关系，否则常常会获得低信噪比图像。</p>
+<p><span style='background-color: #c0ebd7'>Thus, this restoration problem is composed of projection and denoising, presenting the opportunity to test whether CARE networks can deal with such composite tasks.</span>: 因此，这个重建问题由两部分组成，包括投影和去噪，可以用来测试CARE能否胜任这种复杂的任务。</p>
+<p><span style='background-color: #c0ebd7'>For training, we again acquired pairs of low- and high-SNR 3D image stacks, and further generated 2D projection images from the high-SNR stacks that serve as ground truth</span>: 为了训练，我们又获取了低信噪比和高信噪比的三维数据集，并用高信噪比的三维数据集投影获取了二维数据集作为金标准。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2a.png" alt="CARE_F2a"><br><span style='background-color: #c0ebd7'>We developed a task-specific network architecture that consists of two jointly trained parts: a network for surface projection, followed by a network for image denoising</span>: 我们开发了一种面向任务型的特殊网络结构，由两部分组成，第一个网络结构用于投影，第二个网络结构用于去噪。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2b.png" alt="CARE_F2b"><br>第一个Unet的网络结构用于生成2为的投影数据，第二个网络结构用了ResUnet，用于生成2维的去噪数据<br><a target="_blank" rel="noopener" href="http://fang-bnn.gitee.io/image_bed/bed/CARE_3D22DNetwork.jpg">CARE_3D22DNetwork</a></p>
+<p><span style='background-color: #c0ebd7'>The results show that with CARE, reducing light dosage up to tenfold has virtually no adverse effect on the quality of segmentation and tracking results obtained on the projected 2D images with an established analysis pipeline</span>: 这一结果表明CARE能够在降低10倍光照强度下实现对对分割和追踪无明显副作用的2为图像投影重建。</p>
+<p><span style='background-color: #c0ebd7'>Even for this complex task, the gained photon budget can be used to move beyond the design space, for example, by increasing temporal resolution, and consequently improving the precision of tracking of cell behaviors during wing morphogenesis</span>: 甚至在这种复杂的重建任务中，获得的光子补偿能够用于超越设计空间的限制比如增强事件分辨率、提高翅膀形态发育的细胞行为的追踪精准度。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_Fwing.png" alt="CARE_F2c"><br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F2d.png" alt="CARE_F2d"><br>在这张图中可以类似的得出Network较经典的方法更加具有鲁棒性和重建能力，虽然差距并不是那么大，在supplementary fig把network和更多的经典重建方法比较（为什么不和更多的网络比较呢），并且用相同的分割方法（随机森林）对网络输出结果和输入进行分割，并用SEG作为指标，发现高曝光引起的漂白会降低传统方法重建后的分割效果，而网络则不会。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF12.png" alt="CARE_SF12"></p>
+<h2 id="Image-restoration-with-semi-synthetic-training-data"><a href="#Image-restoration-with-semi-synthetic-training-data" class="headerlink" title="Image restoration with semi-synthetic training data"></a>Image restoration with semi-synthetic training data</h2><p>用半人工合成数据进行图像恢复</p>
+<p><span style='background-color: #c0ebd7'>A common problem in fluorescence microscopy is that the axial resolution of volumetric acquisitions is substantially lower than the lateral resolution (some advanced modalities allow for isotropic acquisitions, such as multiview light-sheet microscopy)</span>: 一个在荧光显微镜中比较普遍存在的问题就是轴向的分辨率往往低于横向的分辨率（一些比较现先进的显微镜则不然，如<a target="_blank" rel="noopener" href="https://www.nature.com/articles/nmeth.2064">多角度光片显微镜</a>）</p>
+<p><span style='background-color: #c0ebd7'>This anisotropy compromises the ability to accurately measure properties such as the shapes or volumes of cells.</span>: 这一各向异性迫使我们在精准的测量细胞形状和体积上做出让步。</p>
+<p><span style='background-color: #c0ebd7'>Anisotropy is caused by the inherent axial elongation of the optical point spread function (PSF), and the often low axial sampling rate of volumetric acquisitions required for fast imaging.</span>: 各向异性是由样品固有的特性造成的，即在光路的延长线上，轴向的点扩散函数和横向的点扩散函数不同，而且对高速成像而言，轴向成像速率相对较慢，所以只能牺牲轴向的分辨率。</p>
+<p><span style='background-color: #c0ebd7'>For the restoration of isotropic image resolution, adequate pairs of training data cannot directly be acquired at the microscope.</span>: 为了恢复各向同性的图像，仅有由显微镜获取的数据对是不够的。</p>
+<p><span style='background-color: #c0ebd7'>Rather, we took well-resolved lateral slices as ground truth, and computationally modified them (applying a realistic imaging model; Supplementary Note 2) to resemble anisotropic axial slices of the same image stack</span>: 我们将很好的分辨率的横向切片作为金标准，然后用计算的方法进行修饰以生成各向异性的轴向切片。</p>
+<p><span style='background-color: #c0ebd7'>In this way, we generated matching pairs of images showing the same content at axial and lateral resolutions. </span>: 我们以这种方式生成了一一对应的分别以轴向分辨率和横向分辨率为标准的图片。</p>
+<p><span style='background-color: #c0ebd7'>These semi-synthetically generated pairs are suitable to train a CARE network that then restores previously unseen axial slices to nearly isotropic resolution.</span>: 这些半合成的数据对适合用来训练CARE网络，这一网络能够将先前几乎不能分辨的轴向切片重建成和水平分辨率相近的水平。</p>
+<hr>
+<p><span style='background-color: #c0ebd7'></span>: 为了恢复整个各向异性的样品，我们将训练的网络应用于整块水平的切片上，并且采取了两个正交方向的平均作为单一的各向同性重建（xz/yz的平均）</p>
+<ul>
+<li><strong>重建的具体过程</strong></li>
+</ul>
+<ol>
+<li>获取体素$g$，显微镜固有的点扩散函数$h$，轴向上采样因子$\sigma$。</li>
+<li>对高分辨率的水平切片进行以下操作，以实现水平切片轴向切片化<ol>
+<li>对轴向点扩散函数（一维）扩展成二维的点扩散函数，并对水平切片进行卷积</li>
+<li>用轴向的上采样因子$\sigma$进行下采样</li>
+</ol>
+</li>
+<li>对原始高分辨率水平切片和轴向切片化的水平切片采样（分割）后，进行训练。</li>
+<li>对两个正交方向的切片：xz方向和yz方向进行重建，将对应体素平均，获得高分辨的轴向切片。</li>
+</ol>
+<hr>
+<p><span style='background-color: #c0ebd7'>We applied this strategy to increase axial resolution of acquired volumes of fruit fly embryos, zebrafish retina, and mouse liver, imaged with different fluorescence imaging techniques. The results show that CARE improved the axial resolution in all three cases considerably</span>: 我们将这种方法应用于果蝇胚胎，斑马鱼视网膜，小鼠肝、用多种不同的荧光成像方法，这些结果都显示了CARE都大大提高了三种样品的轴向分辨率。</p>
+<p><span style='background-color: #c0ebd7'>To quantify this, we performed Fourier spectrum analysis of Drosophila volumes before and after restoration, and showed that the frequencies along the axial dimension are fully restored, while frequencies along the lateral dimensions remain unchanged </span>: 为了证实这一点，我们对重建前和重建后的果蝇样本进行了傅里叶分析，发现轴向的分辨率得到了较好的重建，同时横向分辨率得到了保持。</p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF16.png" alt="CARE_SF16"><br>从上图上就可以很好地说明问题，首先从信号来看，直观感受就是经过网络重建后很明显的清晰了，分辨率提高了，在频率空间中，横向的比较，应该是x方向的频率是接近的，即水平方向的分辨率保持的，而纵向蓝色是输入，红色是网络输出，可以看到在高频段红色明显要高于蓝色，说明重建后的分辨率确实提高了很多，且和横向的形状较为接近，说明纵向和横向分辨率接近。</p>
+<p><span style='background-color: #c0ebd7'>Since the purpose of the fruit fly data is to segment and track nuclei, we applied a common segmentation pipeline to the raw and restored images, and observed that the fraction of incorrectly identified nuclei was reduced from 1.7% to 0.2%</span>: 因为以上果蝇胚胎数据是用来分割和跟踪核的移动的，我们将分割算法应用于初始数据（经过上采样）和重建图像，并且观察到错误率由原来的1.7%下降到了0.2%。</p>
+<p><span style='background-color: #c0ebd7'>Thus, restoring anisotropic volumetric embryo images to effectively isotropic stacks leads to improved segmentation, and will enable more reliable extraction of developmental lineages.</span>: 因此将胚胎图像从各向异性重建成各向同性，能够提高分割，从而对发育细胞系的更可靠的提取。</p>
+<p><span style='background-color: #c0ebd7'>While isotropic images facilitate segmentation and subsequent quantification of shapes and volumes of cells, vessels, or other biological objects of interest, higher imaging speed enables imaging of larger volumes and their tracking over time. Indeed, respective CARE networks deliver the desired axial resolution with up to tenfold fewer axial slices </span>: 这种各向同性的图片对分割和随后细胞、血管和生物对象的形状体积定量化成为可能，同时更高的成像速度有使得更大体积和对对象的追踪得以实现。事实上，这一网络的应用可以使轴向的数据量减少十倍。</p>
+<p><span style='background-color: #c0ebd7'>allowing one to reach comparable results ten times faster. We quantified the effect of subsampling on raw and restored volumes with respect to restorations of isotropically sampled volumes for the case of the liver data</span>: 使得我们能以快10倍的速度获取同水平的图像。我们又将肝细胞原始数据二次采样结果、重建结果和各向同性采样结果进行对比。</p>
+<p><span style='background-color: #c0ebd7'>Finally, we observed that for two-channel datasets such as the zebrafish, networks learned to exploit correlations between channels, leading to a better overall restoration quality compared to results based on individual channels.</span>: 最后，我们观察了如斑马鱼的双通道数据，发现神经网络能够探索两个通道之间的联系，使得重建效果较基于单个通道的效果更好。<mark>！！！SRTP</mark></p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF15.png" alt="CARE_SF15"></p>
+<h2 id="Image-restoration-with-synthetic-training-data"><a href="#Image-restoration-with-synthetic-training-data" class="headerlink" title="Image restoration with synthetic training data"></a>Image restoration with synthetic training data</h2><p>用合成数据进行训练</p>
+<p><span style='background-color: #c0ebd7'>Having seen the potential of using semi-synthetic training data for CARE, we next investigated whether reasonable restorations can be achieved even from synthetic image data alone, that is, without involving real microscopy data during training.</span>: 见证了CARE在半合成数据上学习的潜力，我们接下来想试试在仅仅靠全部合成的图像数据进行训练，CARE能否完成合理的重建，也就是说在训练过程中完全不涉及真实地显微镜数据。</p>
+<p><span style='background-color: #c0ebd7'>In most of the previous applications, one of the main benefits of CARE networks was improved imaging speed</span>: 在先前的应用中，CARE的主要优势在于能够提高成像速度。</p>
+<p><span style='background-color: #c0ebd7'>Many biological applications additionally require the resolution of sub-diffraction structures in the context of live-cell imaging</span>: 在许多生物学的应用中，额外要求获取活细胞成像中的亚衍射结构。</p>
+<p><span style='background-color: #c0ebd7'>Super-resolution imaging modalities achieve the necessary resolution, but suffer from low acquisition rates</span>: 超分辨成像能够达到必要的分辨率，但是受到低成像速率的限制。</p>
+<p><span style='background-color: #c0ebd7'>In contrast, widefield imaging offers<br>the necessary speed, but lacks the required resolution. </span>: 相反，明场成像拥有必要的成像速度，但是缺乏所要求的分辨率。</p>
+<p><span style='background-color: #c0ebd7'>We therefore tested whether CARE can computationally resolve sub-diffraction structures using only widefield images as input</span>: 我们于是测试了CARE能否只用明场成像作为输入解决亚衍射结构成像问题。</p>
+<p><span style='background-color: #c0ebd7'>Note that this is a fundamentally different approach compared to recently proposed methods for single-molecule localization microscopy that reconstruct a single super-resolved image from multiple diffraction-limited input frames using deep learning</span>: 值得注意的是，这是一种和其他最近提出的单分子定位显微镜从根本上就不同的方法，单分子显微镜利用深度学习，将多张受限于衍射极限的输入图片；合成一张超分辨图片。</p>
+<p><span style='background-color: #c0ebd7'> To this end, we developed synthetic generative models of tubular and point-like structures that are commonly studied in biology. </span>: 为此，我们开发了生成管状和点状结构的模型，这些结构在生物学中是受到普遍研究的。</p>
+<p><span style='background-color: #c0ebd7'>To obtain synthetic image pairs for training, we used these generated structures as ground truth, and computationally modified them to resemble actual microscopy data</span>: 为了获取合成图像集的训练数据，我们将生成的这些结构作为金标准，并且将他们修饰成类似于真实的显微镜数据。</p>
+<ul>
+<li><p>生成策略</p>
+<ul>
+<li><p>微管模拟数据<br>  $\kappa_n=exp(2\pi i \times clip_{\kappa_{max}}[\kappa_0+\mathscr{W}_n(d_{\kappa})]),\ \ \ \mathscr{W}_n(d_\kappa)\sim\sum\limits_i^n\mathscr{N}(0, d_{\kappa})$</p>
+<p>  $v_n=v_0\ exp(2\pi i\times \sum\limits_{i=0}^n \kappa_i)$</p>
+<p>  $x_n = x_0+\sum\limits_{i=0}^nv_i$</p>
+</li>
+<li><p>囊泡模拟数据<br>  类似于微管数据的合成</p>
+</li>
+<li>人工噪声<br>  低频perlin噪声（背景荧光），PSF卷积、增加高斯和泊松相机噪声。</li>
+</ul>
+</li>
+</ul>
+<p><span style='background-color: #c0ebd7'>Specifically, we created synthetic ground-truth images of tubular meshes resembling microtubules, and point-like structures of various sizes mimicking secretory granules.</span>: 具体而言，我们创建了类似于微管的管状网格的合成图像作为金标准，以及模拟分泌颗粒的各种大小的点状结构。</p>
+<p><span style='background-color: #c0ebd7'>Then we computed synthetic input images by simulating the image degradation process by applying a PSF, camera noise, and background auto-fluorescence </span>: 于是，我们模拟真实数据，为合成的结构添加了PSF，相机噪声和背景自动荧光</p>
+<p><span style='background-color: #c0ebd7'>Finally, we trained a CARE network on these generated image pairs, and applied it to two-channel widefield time-lapse images of rat INS-1 cells where the secretory granules and the microtubules were labeled.</span> 最后我们利用这些合成的数据集进行训练，并且将训练好的网络应用于INS-1细胞的双通道数据中，其中的分泌囊泡和微管被标注。</p>
+<p><span style='background-color: #c0ebd7'>We observed that the restoration of both microtubules and secretory granules exhibited a dramatically improved resolution, revealing structures imperceptible in the widefield images.</span>: 我们观察到重建的分泌囊泡和微管图像的分辨率都得到了极大的提升，解释了明场图像中难以察觉的细节结构。</p>
+<p><span style='background-color: #c0ebd7'>To substantiate this observation, we compared the CARE restoration to the results obtained by deconvolution, which is commonly used to enhance widefield images, Line profiles through the data show the improved performance of the CARE network over deconvolution </span>: 为了证实这个现象，我们将CARE重建结果和去卷积比较, 通过线剖面的数据显示了 CARE 网络在反卷积方面的改进性能。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F4b.png" alt="CARE_F4b"></p>
+<p><span style='background-color: #c0ebd7'>We additionally compared results obtained by CARE with those from superresolution radial fluctuations (SRRF), a state-of-the-art method for reconstructing super-resolution images from widefield timelapse data</span>: 我们又比较了通过CARE重建结果和SRRF重建结果。</p>
+<p><span style='background-color: #c0ebd7'>We applied both methods on time-lapse widefield images of GFP-tagged microtubules in HeLa cells. The results show that both CARE and SRRF are able to resolve qualitatively similar microtubular structures </span>: 我们将两种方法都应用于GFP标记的海拉微管时序明场图。这些结果显示CARE和SRRF都能够实现性质相似的微管结构重建。</p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_F4c.png" alt="CARE_F4c"><br>可以看到，Network的重建效果在背景噪声上明显要由于SRRF重建的，因为模拟数据的金标准的背景是比较好的，我觉得我们通过SRRF做金标准重建的效果也绝对没有模拟数据的效果好。</p>
+<p><span style='background-color: #c0ebd7'>However, CARE reconstructions enable imaging to be carried out at least 20 times faster, since they are computed from a single average of up to 10 consecutive raw images while SRRF required about 200 consecutive widefield frames</span>: 然而，CARE重建图像的速度是SRRF的20倍，因为CARE重建结果是由10帧连续图像平均所得的一张图像计算所得，而SRRF需要连续的200帧明场图像。</p>
+<p><span style='background-color: #c0ebd7'>We also used SQUIRREL to quantify<br>the error for both methods and observed that CARE generally produced better results, especially in image regions containing overlapping structures of interest</span>: 我们用SQUIRREL进行定量分析error map和RSE，发现在微管重叠量较大的地方，重建效果较SRRF更好。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF23.png" alt="CARE_SF23"><br>这张图可以有两组对照，第一组是两个时间点的对照，第二组是有背景和无背景的对照。时间序列上的对照可以看到随着时间增加， 误差是有一种微弱的减小的趋势的，这个感觉没啥好分析的。另外一个是在微管密度高，也就是这里的R2，without background中，Network的重建效果要远好于SRRF重建效果；而在微观密度较低，如这里的R1中，SRRF和Network重建较为接近。作者在这里写的原因和我之前在上面写的类似，是因为生成数据中的金标准的是没有背景荧光的。</p>
+<p><span style='background-color: #c0ebd7'>Taken together, these results suggest that CARE networks can enhance widefield images to a resolution usually obtainable only with super-resolution microscopy, yet at considerably higher frame rates</span>: 总的来说，这些结果说明CARE网络能够提高明场图像的分辨率，在较快的拍摄速率下实现超分辨显微镜才能达到的分辨率。</p>
+<h2 id="Reliablility-of-image-restoration"><a href="#Reliablility-of-image-restoration" class="headerlink" title="Reliablility of image restoration"></a>Reliablility of image restoration</h2><p>深度学习图像重建的可靠性</p>
+<p><span style='background-color: #c0ebd7'>We have shown that CARE networks perform well on a wide range of image restoration tasks, opening up new avenues for biological observations</span>我们展示了CARE网络能够胜任较为广泛的图像重建任务，开生物成像之先路。</p>
+<p><span style='background-color: #c0ebd7'>However, as for any image processing method, the issue of reliability of results needs to be addressed</span>: 但与此同时，我们也需要关注结果的可靠性。</p>
+<p><span style='background-color: #c0ebd7'>CARE networks are trained for a specific biological organism, fluorescent marker, and microscope setting. When a network is applied to data it was not trained for, results are likely to suffer in  uality, as is the case for any (supervised) method based on machine learning</span>: CARE网络为特定条件下的生物结构、荧光标记和显微镜参数进行训练。当CARE被用于不匹配的数据训练时，可能会导致重建效果不好，这是所有监督学习都存在的问题。</p>
+<p><span style='background-color: #c0ebd7'>Nevertheless, we observed only minimal ‘hallucination’ effects, where structures seen in the training data erroneously appear in restored images </span>: 然而，我们还是观察到了叫少量的幻觉效应，即训练集中的结构出现在了重建的图像中，在SF25a中，展示了较大的两个误差。</p>
+<ul>
+<li>误差汇总<ul>
+<li>异源数据产生的重建误差<br>  <img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF24.png" alt="CARE_SF24"><br>  误差较为明显</li>
+<li>其他误差<br>  <img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF25.png" alt="CARE_SF25"><br>  a: 当在极低的信噪比情况下进行数据重建时，会出现较大的误差如结构的增加或是结构的消失。说明网络还是不够强大。<br>  b: 归一化错误：在训练时，数据被归一化为$(p_{min}, p_{max})=(2\%/99.7\%)$，而在测试时，数据被归一化为$(p_{min}, p_{max})=(1\%/30\%)$，把最强的信号定位在了第30%的位置，导致信号较弱背景位置出现了大量噪点。<br>  c：图片缩放，对一个网络而言，其输入图像对应的像素点尺寸和PSF都是固定的。如果用他来训练错误缩放的图像，就会出现问题。</li>
+</ul>
+</li>
+</ul>
+<p><span style='background-color: #c0ebd7'>Nevertheless, it is essential to identify cases where the above mentioned problems occur. To enable this, we changed the last network layer so that it predicts a probability distribution for each pixel</span>: 然而，我们有必要明确什么时候以上问题会发生，为了解决这个问题，我们改变了网络的最后一层以预测每个像素点的分布。</p>
+<p><span style='background-color: #c0ebd7'>We chose a Laplace distribution for simplicity and robustness.</span>: 我们采用拉普拉斯分布，因为他具有简洁性和鲁棒性。</p>
+<p><span style='background-color: #c0ebd7'>For probabilistic CARE networks, the mean of the distribution is used as the restored pixel value, while the width (variance) of each pixel distribution encodes the uncertainty of pixel predictions</span>: 对于概率CARE网络，分布的平均代表了重建像素的值，而方差代表了每个像素预测的不确定性。</p>
+<p><span style='background-color: #c0ebd7'>Intuitively, narrow distributions signify high confidence, whereas broad distributions indicate low-confidence pixel predictions. This allows us to provide per-pixel confidence intervals of the restored<br>image </span>: 比较直观的来看，比较窄的分布具有比较高的置信度，然而比较宽的分布说明单个像素的预测的置信度比较低。这位我们提供了重建图像的逐像素置信区间。</p>
+<p><span style='background-color: #c0ebd7'>We observed that variances tend to increase with restored pixel intensities.</span>: 我们观察到方差随着重建像素的强度增强而增强。</p>
+<p><span style='background-color: #c0ebd7'>This makes it hard to intuitively understand which areas of a restored image are reliable or unreliable from a static image of per-pixel variances</span>:因此，仅仅依靠静态地像素方差数据，难以直观地理解图像的某一块重建区域是可靠的或是不可靠的。</p>
+<p><span style='background-color: #c0ebd7'>Therefore, we visualize the uncertainty in short video sequences, where pixel intensities are randomly sampled from their<br>respective distributions </span>: 因此，我们用短序列的方式可视化不确定性，在这些短序列中，像素的强度是从他们的分布中随机采样的。</p>
+<p><span style='background-color: #c0ebd7'>We additionally reasoned that by analyzing the consistency of predictions from several trained models we can assess their reliability. </span>: 我们还推断，通过分析来自几个训练模型的预测的一致性，我们可以评估它们的可靠性。</p>
+<p><span style='background-color: #c0ebd7'>To that end, we train ensembles of about five CARE networks on randomized sequences of the same training data</span>: 为了实现这一点，我们以将训练数据随机打乱，训练了一组CARE网络。</p>
+<p><span style='background-color: #c0ebd7'>We introduced a measure D that quantifies the probabilistic ensemble disagreement per pixel. D takes values<br>between 0 and 1, with higher values signifying larger disagreement, that is, smaller overlap among the distributions predicted by the networks in the ensemble.</span>: 我们又引入了一种测度D, 用于定量化一组概率网络对单个像素预测的不一致性。D在0到1之间取值，值越高，代表不一致性越强，也就是说网络之间的重合度越小。</p>
+<p><span style='background-color: #c0ebd7'>Using fly wing denoising as an example, we observed that in areas where different networks in an ensemble predicted very similar structures, the disagreement measure D was low.</span>: 以果蝇翅膀的降噪为例，我们观察到在那些网络预测结果相似的地方，D非常低，在网络结果不相似的地方，D值非常高。</p>
+<p><span style='background-color: #c0ebd7'>Therefore, training ensembles of CARE networks is useful for detecting problematic image areas that cannot reliably be restored. </span>: 因此训练一组CARE网络能够检测不可靠的重建的区域。</p>
+<h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><p><span style='background-color: #c0ebd7'>We have introduced CARE networks designed to restore fluorescence microscopy data.</span>: 我们介绍了CARE网络，它设计被用于重建荧光显微图像。</p>
+<p><span style='background-color: #c0ebd7'>A key feature of our approach is that the generation of training data does not require laborious manual training data generation.</span>: 我们方法的一个关键的特点，是我们自己生成训练数据，而不需要实验室人工拍摄以生成训练数据。</p>
+<p><span style='background-color: #c0ebd7'>With CARE, flatworms can be imaged without unwanted muscle contractions, beetle embryos can be imaged much more gently and therefore for longer and much faster, large tiled scans of entire Drosophila wings can be imaged and simultaneously projected at dramatically increased temporal resolution, isotropic restorations of embryos and large organs can be computed from existing anisotropic data, and sub-diffraction structures can be restored from widefield systems at high frame rates</span>: 有了CARE，就可以拍摄无肌肉收缩的扁虫的成像；甲虫胚胎可以在更加微弱的光照下进行曝光时间更长，帧率更高的成像；大面的完整的果蝇翅膀能够被同时以更高的时间分辨率投影、成像；胚胎和大器官能够由各向异性重建为各向同性；并且亚衍射极限结构能够由明场下高帧率获取的图像下重建得到。</p>
+<p><span style='background-color: #c0ebd7'>In all these examples, CARE allows the photon budget saved during imaging to be invested into improvement of acquisition parameters relevant for a given biological problem, such as speed of imaging, phototoxicity, isotropy, and resolution</span>: 在所有的例子中，CARE能够让光子预算在成像过程中得到保存，并用于提高与特定生物问题相关的参数，如成像速度、曝光时间、光毒性和分辨率</p>
+<p><span style='background-color: #c0ebd7'>Whether experimentalists are willing to make the above-mentioned investment depends on their trust that a CARE networ k is accurately restoring the image</span>: 研究人员是否愿意用CARE依赖于他们是否愿意相信网络能够精确地重建图像。</p>
+<p><span style='background-color: #c0ebd7'>This is a valid concern that applies to every image restoration approach.</span>： 这是一个每种图像重建方法都存在的实际问题。</p>
+<p><span style='background-color: #c0ebd7'>What sets CARE apart is the availability of additional readouts, that is, per-pixel confidence intervals and ensemble disagreement scores, which  allow users to identify image regions where restorations might not be accurate</span>: 让CARE不同的是，它存在另外的输出，也就是说逐像素置信区间和网路组不一致因素，让我们能够验证图像区域的哪些区域可能没有得到精准重建。</p>
+<p><span style='background-color: #c0ebd7'>We have shown multiple examples where image restoration with CARE networks positively impacts downstream image analysis, such as segmentation and tracking of cells needed to extract developmental lineages</span>:  我们展示了大量的例子，这些例子中都展现了CARE重建的结果能够积极地影响下游地图像分析，比如分割和追踪那些需要提取的发育细胞系。</p>
+<p><span style='background-color: #c0ebd7'>Interestingly, in the case of Tribolium, CARE improved segmentation by efficient denoising, whereas in the case of Drosophila, the segmentation was improved by an increase in the isotropy of volumetric acquisitions</span>: 有意思的是，在甲虫的例子中，去噪能够提高分割的效果、在果蝇的例子中，各向同性化能够提高分割的效果。</p>
+<p><span style='background-color: #c0ebd7'>These two benefits are not mutually exclusive and could very well be combined. In fact, we have shown on data from developing Drosophila wings that composite tasks can be jointly trained. Future explorations of joint training of composite networks will further broaden the applicability of CARE to complex biological imaging problems</span>: 这两个优点并不矛盾，并且可以很好地结合；</p>
+<p><span style='background-color: #c0ebd7'>In fact, we have shown on data from developing Drosophila wings that composite tasks can be jointly trained. Future explorations of joint training of composite networks will further broaden the applicability of CARE to complex biological imaging problems</span>: 事实上，我们由果蝇翅膀的数据可以展示，CARE可以训练复合的任务，进一步对符合任务的网络探索能够进一步拓宽CARE在复杂生物成像问题中的应用。</p>
+<p><span style='background-color: #c0ebd7'>However, CARE networks cannot be applied to all existing image restoration problems. </span>: 然而，CARE网络不能够用于所有的图像重建问题。</p>
+<p><span style='background-color: #c0ebd7'>For instance, the proposed isotropic restoration relies on the implicit assumption that structures of interest do appear in arbitrary orientations and that the PSF is constant throughout the image volume.</span>: 比如，提出的各向同行重建方法是基于样品中的结构是朝着任意方向的，并且PSF在整个样品中相同的假设。</p>
+<p><span style='background-color: #c0ebd7'> This assumption is only approximately true, and becomes increasingly worse as the imaging depth in the sample tissue increases.</span>: 这一假设只是大致正确，比如当样品深度更深时，情况会变得更糟。</p>
+<p><span style='background-color: #c0ebd7'>Additionally, because of the nonlinear nature of neural network predictions, CARE must not be used for intensity-based quantifications such as, for example, fluorophore counting</span>: 另外，因为神经网络的非线性，CARE绝对不能用于基于荧光强度的定量分析，比如说荧光量的计数。</p>
+<p><span style='background-color: #c0ebd7'>Furthermore, the disagreement score we introduced may be useful to additionally identify instances where training and test data are incompatible, that is, when a CARE network is applied on data that contain biological structures absent from the training set</span>: 更进一步的，我们提出的不一致性可能在训练和测试数据不一致时发挥作用，即CARE网络测试数据集中出现包含训练数据集中未出现的结构。</p>
+<p><span style='background-color: #c0ebd7'>Overall, our results show that fluorescence microscopes can, in combination with CARE, operate at higher frame rates, shorter exposures, and lower light intensities, while reaching higher resolution, and thereby improving downstream analysis.</span>: 总而言之，我们的结果展示了CARE与荧光显微镜结合后，能够以更高帧率、更短曝光时间，更低的光强度实现更高的分辨率，从而提高下游的图像分析。</p>
+<p><span style='background-color: #c0ebd7'>The technology described here is readily accessible to the scientific community through the open source tools we provide.</span>: 以上提到的技术都是开源的</p>
+<p><span style='background-color: #c0ebd7'>We predict that the current explosion of image data diversity and the ability of CARE networks to automatically adapt to various image contents will make such learning approaches prevalent for biological image restoration and will open up new windows into the inner workings of biological systems across scales</span>: 我们断定，在当前爆发式的大量图像数据和CARE网络能够自动适应多种成像内容的能力的促进下，这一深度学习的方法将会在生物成像重建中得到较好的应用，并且为跨尺度的生物研究打开一扇新窗口。</p>
+<hr>
+<h1 id="图像重建的可靠性分析"><a href="#图像重建的可靠性分析" class="headerlink" title="图像重建的可靠性分析"></a>图像重建的可靠性分析</h1><p>图像重建的不确定性可以分为两种：Aleatoric uncertainty（随机不确定性），是一种固然存在的不确定性，如显微镜的相机永远都不可能捕捉图像的真实值；Epistemic uncertainty（认知不确定性），可以通过不断地补充信息从而减少的，可以通过增加数据量而减少。<em>举个例子就比如说在晚上对某些物体用手机拍照，噪点很多，但是通过增加曝光时间，可以让图像更清晰些，但是始终无法达到真实地记录这个物体所有信息地目的</em></p>
+<h2 id="随机不确定性"><a href="#随机不确定性" class="headerlink" title="随机不确定性"></a>随机不确定性</h2><ul>
+<li>MSE</li>
+</ul>
+<script type="math/tex; mode=display">
+L_{\mathrm{mse}}(\theta)=\frac{1}{T} \frac{1}{N} \sum_{t=1}^{T} \sum_{i=1}^{N}\left(y_{i}^{t}-g_{\theta}\left(x^{t}\right)_{i}\right)^{2}\ \ \ \ \ \ (3.1)</script><ul>
+<li>MSE等效于高斯分布地极大似然估计：</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathcal{L}_{\text {gauss }}^{\text {homoscedastic }}(\theta) &=\prod_{t=1}^{T} \prod_{i=1}^{N} p_{\text {gauss }}\left(y_{i}^{t} ; g_{\theta}\left(x^{t}\right)_{i}, \sigma\right) \quad \text { with } \\
+p_{\text {gauss }}(z ; \mu, \sigma) &=\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp \left(-\frac{(z-\mu)^{2}}{2 \sigma^{2}}\right)
+\end{aligned}\ \ \ \ \ \ (3.2 \&3.3)</script><script type="math/tex; mode=display">
+\begin{aligned}
+\underset{\theta}{\arg \max } \mathcal{L}_{\text {gauss }}^{\text {homoscedastic }}(\theta) &=\underset{\theta}{\arg \min }-\log \mathcal{L}_{\text {gauss }}^{\text {homoscedastic }}(\theta) \\
+&=\underset{\theta}{\arg \min } \sum_{t=1}^{T} \sum_{i=1}^{N} \frac{\left(y_{i}^{t}-g_{\theta}\left(x^{t}\right)_{i}\right)^{2}}{2 \sigma^{2}}+\log \sqrt{2 \pi \sigma^{2}} \\
+&=\underset{\theta}{\arg \min } L_{\mathrm{mse}}(\theta)
+\end{aligned}\ \ \ \ \ \ (3.4\&3.5\&3.6)</script><ul>
+<li>拉普拉斯分布与概率网络</li>
+</ul>
+<script type="math/tex; mode=display">
+p_{\text {laplace }}(z ; \mu, \sigma)=\frac{1}{2 \sigma} \exp \left(-\frac{|z-\mu|}{\sigma}\right)\ \ \ \ \ \ (3.7)</script><script type="math/tex; mode=display">
+g_{\theta}(x)_{i}=p_{\text {laplace }}\left(\mu_{\theta}(x)_{i}, \sigma_{\theta}(x)_{i}\right)\ \ \ \ \ \ (3.8)</script><ul>
+<li>损失函数</li>
+</ul>
+<script type="math/tex; mode=display">
+L_{\text {laplace }}(\theta)=\frac{1}{T} \frac{1}{N} \sum_{t=1}^{T} \sum_{i=1}^{N} \frac{\left|y_{i}^{t}-\mu_{\theta}\left(x^{t}\right)_{i}\right|}{\sigma_{\theta}\left(x^{t}\right)_{i}}+\log \sigma_{\theta}\left(x^{t}\right)_{i}\ \ \ \ \ \ (3.9)</script><ul>
+<li>预测输出</li>
+</ul>
+<script type="math/tex; mode=display">
+\hat{y}_{i}=\mathbb{E}\left[g_{\theta}(x)_{i}\right]=\mu_{\theta}(x)_{i}\ \ \ \ \ \ (3.11)</script><h2 id="认知不确定性"><a href="#认知不确定性" class="headerlink" title="认知不确定性"></a>认知不确定性</h2><p>（一些理论和大量参考文献铺垫已省略）：</p>
+<ul>
+<li>最终分布<br>训练一组网络（输出结果不同）<br>得到最终分布。其中$\Theta=\{\theta_M\}^M_{m=1}$，它既包含了随机不确定性参数，又包含了认知不确定性参数，因此可以代表整体的不确定性。</li>
+</ul>
+<script type="math/tex; mode=display">
+g_{\Theta}(x)_{i}=\frac{1}{M} \sum_{m=1}^{M} p_{\text {laplace }}\left(\mu_{\theta_{m}}(x)_{i}, \sigma_{\theta_{m}}(x)_{i}\right)\ \ \ \ \ \ (3.13)</script><h2 id="验证和评估"><a href="#验证和评估" class="headerlink" title="验证和评估"></a>验证和评估</h2><h3 id="Reliablility-diagram"><a href="#Reliablility-diagram" class="headerlink" title="Reliablility diagram"></a>Reliablility diagram</h3><p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF26.png" alt="CARE_SF26"></p>
+<p>(省略了部分铺垫和参考文献，大致讲述了分类问题中的网络性能验证方法)</p>
+<p>这里只讲述在这篇文章中的操作方法。</p>
+<p>首先我们已经有了每个像素的分布$q_i=g_{\Theta}(x)_i$，每个像素预测的结果$\hat{y}_i$，我们对置信率和准确率进行计算。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\operatorname{accuracy}(S, \epsilon) &=\frac{1}{|S|} \sum_{i \in S} \mathbf{1}\left[y_{i} \in A_{i}^{\epsilon}\right] &=\frac{1}{|S|} \sum_{i \in S} 1\left[y_{i} \in\left[\hat{y}_{i}-\epsilon, \hat{y}_{i}+\epsilon\right]\right] \\
+\operatorname{confidence}(S, \epsilon) &=\frac{1}{|S|} \sum_{i \in S} \hat{r}_{i}^{\epsilon} \quad &=\frac{1}{|S|} \sum_{i \in S} \int_{\hat{y}_{i}-\epsilon}^{\hat{y}_{i}+\epsilon} q_{i}(z) d z
+\end{aligned}\ \ \ \ \ \ (3.16\&3.17)</script><p>其中$\epsilon$是人为设定的超参数，用于控制置信区间的范围。如果$y_i$落在了置信区间范围内，那么就算作”分类正确”，置信度就通过积分计算。</p>
+<p>这里的S算是对置信度的一个区间分类，对于每一个区间都计算区间内的置信度和准确度。</p>
+<p>S的分类方法：$S_k^\epsilon=\{i\in G: \hat{r}_i\in(\tau_k, \tau_{k+1}]\}$</p>
+<p>最后用ECE表示</p>
+<script type="math/tex; mode=display">
+\operatorname{ECE}(\epsilon)=\sum_{k=1}^{K} \frac{\left|S_{k}^{\epsilon}\right|}{N}\left|\operatorname{accuracy}\left(S_{k}^{\epsilon}, \epsilon\right)-\operatorname{confidence}\left(S_{k}^{\epsilon}, \epsilon\right)\right|\ \ \ \ \ \ (3.18)</script><h3 id="网络组的不一致性"><a href="#网络组的不一致性" class="headerlink" title="网络组的不一致性"></a>网络组的不一致性</h3><p>用KL散度表示，KL散度是基于熵的概念，而熵能够用来衡量一个分布混乱程度，或者说信息量的大小，KL从公式上看就是相对熵，即一个分布相对另一个分布的熵，可以简单地理解为两个分布的相近程度。</p>
+<script type="math/tex; mode=display">
+D_{\mathrm{KL}}(p \| q)=\int p(z) \log \frac{p(z)}{q(z)} d z=[\underbrace{-\int p(z) \log q(z) d z}_{H(p, q)}]-[\underbrace{-\int p(z) \log p(z) d z}_{H(p)}]\ \ \ \ \ \ (3.19)</script><p>放到这篇文章中就可以表示为</p>
+<script type="math/tex; mode=display">
+\mathcal{D}(x)_{i}=\frac{1}{M} \sum_{m=1}^{M} D_{\mathrm{KL}}\left(g_{\theta_{m}}(x)_{i} \| g_{\Theta}(x)_{i}\right)\ \ \ \ \ \ (3.20)</script><p>对于当个网络而言，其对平均分布的KL散度可以表示为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+D_{\mathrm{KL}}\left(q_{m}^{i} \| q^{i}\right) &=\int q_{m}^{i}(z) \log \frac{q_{m}^{i}(z)}{\frac{1}{M} \sum_{m^{\prime}=1}^{M} q_{m^{\prime}}^{i}(z)} d z \\
+&=\log M+\int q_{m}^{i}(z) \underbrace{\left[\log q_{m}^{i}(z)-\log \sum_{m^{\prime}=1}^{M} q_{m^{\prime}}^{i}(z)\right]}_{\leq 0} d z \\
+& \leq \log M
+\end{aligned}</script><p>对以上式子取极限，当每个网络的对应像素分布都相同时，KL散度为0，当每种分布的支撑集的交集是空集时（也就是说，一种分布不为0的地方，其他分布都是0），上面的≤取到等号，最大值为$\log M$.</p>
+<p>最后对这KL散度用最大值和最小值进行归一化，得到文章中用到的不一致性衡量的标准，其中D越接近于0，一致性越好，越接近于1，一致性越差</p>
+<script type="math/tex; mode=display">
+\widehat{\mathcal{D}}(x)_{i}=\frac{1}{\log M} \mathcal{D}(x)_{i}=\frac{1}{M \log M} \sum_{m=1}^{M} D_{\mathrm{KL}}\left(g_{\theta_{m}}(x)_{i} \| g_{\Theta}(x)_{i}\right)</script><p>最后通过分析，可以看到在训练数据和验证数据一致的情况下，D较小，而在不一致的情况下，D较大。</p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/CARE_SF28.png" alt="CARE_SF28"></p>
+<p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-018-0216-7">论文地址</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
+              <a href="/tags/Microscope/" rel="tag"># Microscope</a>
+              <a href="/tags/Super-resolution/" rel="tag"># Super resolution</a>
+              <a href="/tags/Article/" rel="tag"># Article</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/16/Qt-3/" rel="prev" title="PyQt5信号槽机制(二)">
+      <i class="fa fa-chevron-left"></i> PyQt5信号槽机制(二)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/20/log-20210820/" rel="next" title="log20210820">
+      log20210820 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Title%EF%BC%9AContent-aware-image-restoration-pushing-the-limits-of-fluorescence-microscopy"><span class="nav-number">1.</span> <span class="nav-text">Title：Content-aware image restoration: pushing the limits of fluorescence microscopy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">2.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">3.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Result"><span class="nav-number">4.</span> <span class="nav-text">Result</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-restoration-with-physically-acquired-training-data"><span class="nav-number">4.1.</span> <span class="nav-text">Image restoration with physically acquired training data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-restoration-with-semi-synthetic-training-data"><span class="nav-number">4.2.</span> <span class="nav-text">Image restoration with semi-synthetic training data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-restoration-with-synthetic-training-data"><span class="nav-number">4.3.</span> <span class="nav-text">Image restoration with synthetic training data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reliablility-of-image-restoration"><span class="nav-number">4.4.</span> <span class="nav-text">Reliablility of image restoration</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Discussion"><span class="nav-number">5.</span> <span class="nav-text">Discussion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">图像重建的可靠性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">6.1.</span> <span class="nav-text">随机不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E7%9F%A5%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-number">6.2.</span> <span class="nav-text">认知不确定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E5%92%8C%E8%AF%84%E4%BC%B0"><span class="nav-number">6.3.</span> <span class="nav-text">验证和评估</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reliablility-diagram"><span class="nav-number">6.3.1.</span> <span class="nav-text">Reliablility diagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BB%84%E7%9A%84%E4%B8%8D%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">6.3.2.</span> <span class="nav-text">网络组的不一致性</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="生产队的猪"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">生产队的猪</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">生产队的猪</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

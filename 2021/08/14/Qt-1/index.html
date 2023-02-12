@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"Trebuchet","show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="入门导航&amp;简介 写UI需求（实际上是想要给自己写一个桌面宠物&#x2F;老婆），结合博客导航（天山老妖S原创）和书籍学习。以下为博客导航，书籍学习则希望参考 《PyQt5快速开发与实战》。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt5入门&amp;简介">
+<meta property="og:url" content="http://example.com/2021/08/14/Qt-1/index.html">
+<meta property="og:site_name" content="生产队的猪窝">
+<meta property="og:description" content="入门导航&amp;简介 写UI需求（实际上是想要给自己写一个桌面宠物&#x2F;老婆），结合博客导航（天山老妖S原创）和书籍学习。以下为博客导航，书籍学习则希望参考 《PyQt5快速开发与实战》。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://fang-bnn.gitee.io/image_bed/bed/Qt%E7%AE%80%E4%BB%8B.png">
+<meta property="article:published_time" content="2021-08-13T23:27:54.000Z">
+<meta property="article:modified_time" content="2021-08-24T03:13:03.912Z">
+<meta property="article:author" content="生产队的猪">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="PyQt5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://fang-bnn.gitee.io/image_bed/bed/Qt%E7%AE%80%E4%BB%8B.png">
+
+<link rel="canonical" href="http://example.com/2021/08/14/Qt-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Qt5入门&简介 | 生产队的猪窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">生产队的猪窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/14/Qt-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Qt5入门&简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-13 23:27:54" itemprop="dateCreated datePublished" datetime="2021-08-13T23:27:54Z">2021-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-24 03:13:03" itemprop="dateModified" datetime="2021-08-24T03:13:03Z">2021-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PyQt5/" itemprop="url" rel="index"><span itemprop="name">PyQt5</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="入门导航-amp-简介"><a href="#入门导航-amp-简介" class="headerlink" title="入门导航&amp;简介"></a>入门导航&amp;简介</h1><blockquote>
+<p>写UI需求（实际上是想要给自己写一个桌面宠物/老婆），结合博客导航（天山老妖S原创）和书籍学习。以下为博客导航，书籍学习则希望参考 《PyQt5快速开发与实战》。<br><span id="more"></span></p>
+</blockquote>
+<h2 id="入门导航"><a href="#入门导航" class="headerlink" title="入门导航"></a>入门导航</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2422184">PyQt5简介</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2422187">PyQt5信号槽机制</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2422601">PyQt5基本窗口组件</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2423254">PyQt5高级窗口组件</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2423303">PyQt5布局管理</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2424153">PyQt5 GUI界面设计</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2424319">PyQt5 扩展</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/9291927/2424320">PyQt5 数据库操作</a></li>
+</ul>
+<h2 id="PyQt5简介"><a href="#PyQt5简介" class="headerlink" title="PyQt5简介"></a>PyQt5简介</h2><h3 id="PyQt5简单介绍"><a href="#PyQt5简单介绍" class="headerlink" title="PyQt5简单介绍"></a>PyQt5简单介绍</h3><blockquote>
+<p>PyQt是Qt框架的Python实现，是最强的GUI库之一。PyQt提供了一个设计良好的<strong>窗口控件组合</strong>，每一个PyQt空间都对应一个Qt控件，因此PyQt的API接口和Qt的API接口很接近。</p>
+</blockquote>
+<p>官方网站：www.riverbankcomputing.com<br>PyQt5提供GPL版和商业版证书，自由开发者可以使用免费的GPL许可，如果需要将PyQt用于商业应用，则必须购买商业许可。</p>
+<ul>
+<li>Qt框架：Qt是一个1991年由Qt Company开发的跨平台C++图形用户界面应用程序开发框架，可以开发GUI程序，也可开发非GUI程序，如控制台和服务器。是一种面向对象的框架</li>
+<li>GUI：图形界面</li>
+<li>API，英文全称Application Programming Interface，翻译为“应用程序编程接口”。 是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节</li>
+</ul>
+<h3 id="PyQt5的特性"><a href="#PyQt5的特性" class="headerlink" title="PyQt5的特性"></a>PyQt5的特性</h3><ol>
+<li>基于高性能Qt的GUI控件集</li>
+<li><u>能够跨平台运行在Linux，Window和Mac OS系统上</u></li>
+<li>使用<strong>信号槽</strong>机制进行通信</li>
+<li>对Qt库完全封装</li>
+<li>可以使用成熟的IDE进行界面设计，并自动生成可执行的Python代码</li>
+<li>提供一整套种类齐全的窗口控件</li>
+</ol>
+<h3 id="PyQt4与PyQt5的区别"><a href="#PyQt4与PyQt5的区别" class="headerlink" title="PyQt4与PyQt5的区别"></a>PyQt4与PyQt5的区别</h3><p>区别如下</p>
+<ol>
+<li>重新组合模块，PyQt4中的某些模块被废弃（QtScript），有些被拆分为两个子模块（QtGui、QtWebKit）</li>
+<li>添加新模块，如QtBluetooth、Q他Positioning和Enginio</li>
+<li>废弃SINGAL()和SLOT()，用新的<strong>信号槽</strong>处理方式</li>
+<li>不再支持所有被标记为废弃的或者不建议使用的Qt API</li>
+</ol>
+<h3 id="PyQt5模块"><a href="#PyQt5模块" class="headerlink" title="PyQt5模块"></a>PyQt5模块</h3><p>主要模块如下</p>
+<ol>
+<li>QtCore包含非核心的非GUI功能，主要与时间、文件、文件夹、各种数据、流、URLs、mime类文件文件、 进程、线程一起使用</li>
+<li>QtGui包括窗口系统、事件处理、2D图像、·基本绘画、字体和文字类</li>
+<li>QtWidgets包含一系列创建桌面应用的UI元素</li>
+<li>QtBluetooth模块包含<strong>查找</strong>和<strong>连接蓝牙</strong>的类</li>
+<li>QtNetwork包含网络编程的类，能让TCP/IP和UDP开发变得更加方便和可靠</li>
+<li>QtPositioning包含定位的类，可以使用卫星、WiFi甚至<strong>文本</strong></li>
+<li>Engine包含通过客户端进入和管理Qt Cloud的类</li>
+<li>QtWebSockets包含WebSocket协议的类</li>
+<li>QtWebKit包含一个基WebKit2的web浏览器</li>
+<li>QtWebKitWidgets包含基于QtWidgets的WebKit1类</li>
+<li>QtXml包含<strong>处理xml的类</strong>，提供SAX和DOM API的工具</li>
+<li>QtSvg提供显示SVG内容的类，Scalable Vector Graphics(SVG)是一种是一种基于可扩展标记语言(XML)，用于描述<strong>二维矢量图形</strong>的图形格式</li>
+<li>QtSql提供处理数据库的工具</li>
+<li>QtTest提供测试PyQt5应用的工具</li>
+</ol>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtWidgets, QtCore</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QtWidgets.QApplication(sys.argv)</span><br><span class="line">    widget = QtWidgets.QWidget()</span><br><span class="line">    widget.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line">    widget.setWindowTitle(<span class="string">&quot;Hello, PyQt5&quot;</span>)</span><br><span class="line">    widget.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<p><img src="http://fang-bnn.gitee.io/image_bed/bed/Qt%E7%AE%80%E4%BB%8B.png" alt="运行结果"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/PyQt5/" rel="tag"># PyQt5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/12/log-20210812/" rel="prev" title="log20210812">
+      <i class="fa fa-chevron-left"></i> log20210812
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/15/Qt-2/" rel="next" title="PyQt5信号槽机制(一)">
+      PyQt5信号槽机制(一) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E5%AF%BC%E8%88%AA-amp-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">入门导航&amp;简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E5%AF%BC%E8%88%AA"><span class="nav-number">1.1.</span> <span class="nav-text">入门导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt5%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.</span> <span class="nav-text">PyQt5简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PyQt5%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.1.</span> <span class="nav-text">PyQt5简单介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyQt5%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.2.</span> <span class="nav-text">PyQt5的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyQt4%E4%B8%8EPyQt5%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.3.</span> <span class="nav-text">PyQt4与PyQt5的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyQt5%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.4.</span> <span class="nav-text">PyQt5模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.2.5.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="生产队的猪"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">生产队的猪</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">生产队的猪</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

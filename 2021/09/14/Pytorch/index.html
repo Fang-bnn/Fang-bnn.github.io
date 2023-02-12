@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"Trebuchet","show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Snippets for Pytorch 新手码代码时不会之处，资料源于各个博客，参考链接位于最下方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch">
+<meta property="og:url" content="http://example.com/2021/09/14/Pytorch/index.html">
+<meta property="og:site_name" content="生产队的猪窝">
+<meta property="og:description" content="Snippets for Pytorch 新手码代码时不会之处，资料源于各个博客，参考链接位于最下方">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-13T23:26:55.000Z">
+<meta property="article:modified_time" content="2021-12-16T12:41:31.171Z">
+<meta property="article:author" content="生产队的猪">
+<meta property="article:tag" content="Deep learning">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Coding">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/14/Pytorch/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Pytorch | 生产队的猪窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">生产队的猪窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/14/Pytorch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pytorch
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-13 23:26:55" itemprop="dateCreated datePublished" datetime="2021-09-13T23:26:55Z">2021-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-16 12:41:31" itemprop="dateModified" datetime="2021-12-16T12:41:31Z">2021-12-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Pytorch/" itemprop="url" rel="index"><span itemprop="name">Pytorch</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Snippets-for-Pytorch"><a href="#Snippets-for-Pytorch" class="headerlink" title="Snippets for Pytorch"></a>Snippets for Pytorch</h1><blockquote>
+<p>新手码代码时不会之处，资料源于各个博客，参考链接位于最下方</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="数据集相关"><a href="#数据集相关" class="headerlink" title="数据集相关"></a>数据集相关</h1><h2 id="torch-utils-data-DataLoader"><a href="#torch-utils-data-DataLoader" class="headerlink" title="torch.utils.data.DataLoader"></a>torch.utils.data.DataLoader</h2><ul>
+<li><code>DataLoader</code>是一种可迭代对象，使用<code>iter()</code>访问，不能使用<code>next()</code>访问，通过<code>iter()</code>构建<a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-iterator-generator.html">迭代器</a>，然后可以使用<code>next()</code>访问</li>
+<li>和其他迭代对象一样，<code>DataLoader</code>也可以用<code>for</code>访问，并且一般用<code>for X, y in DataLoader:</code>进行可迭代对象的访问。</li>
+<li><code>DataLoader</code>本质上是一个<code>iterable</code>，并利用多进程来加速<code>batch data</code>的处理，使用<code>yield</code>来使用有限的内存。</li>
+<li><code>DataLoader</code>是一个高效，简洁，只管的网络输入数据结构，便于使用和扩展。</li>
+</ul>
+<h3 id="pytorch数据加载流程"><a href="#pytorch数据加载流程" class="headerlink" title="pytorch数据加载流程"></a>pytorch数据加载流程</h3><ol>
+<li>创建一个Dataset对象</li>
+<li>创建一个DataLoader对象</li>
+<li>循环这个DataLoader对象，将 img，label加载到模型中训练<br>伪代码如下（不严格遵守pytorch语法）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dataset = MyDataset(transform=trans)</span><br><span class="line">dataloader = pytorch.utils.data.DataLoader(dataset)</span><br><span class="line">num_epochs = get(<span class="string">&#x27;n_epochs&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(num_epochs):</span><br><span class="line">	<span class="keyword">for</span> X, y <span class="keyword">in</span> dataloader:</span><br><span class="line">		<span class="comment"># Load Data in Models</span></span><br></pre></td></tr></table></figure>
+<h3 id="DataLoader详解"><a href="#DataLoader详解" class="headerlink" title="DataLoader详解"></a>DataLoader详解</h3><p><strong>DataLoader的作用</strong>：将自定义的Datset根据<code>batchsize</code>的大小，是否<code>shuffle</code>等封装成一个<code>batchsize</code>大小的<code>tensor</code>，用于后续的训练。<br><code>DataLoader(object)</code>的参数：</p>
+<ul>
+<li>dataset(Dataset): 传入的数据集</li>
+<li>batch_size(int, optional): 每个batch有多少个样本</li>
+<li>shuffle(bool, optional): 在每个epoch开始的时候，对数据进行重新排序</li>
+<li>sampler(Sampler, optional): 自定义从数据集中取样本的策略，如果指定这个参数，那么shuffle必须为False</li>
+<li>batch_sampler(Sampler, optional): 与sampler类似，但是一次只返回一个batch的indices（索引），需要注意的是，一旦指定了这个参数，那么batch_size,shuffle,sampler,drop_last就不能再制定了（互斥——Mutually exclusive）</li>
+<li>num_workers (int, optional): 这个参数决定了有几个进程来处理data loading。0意味着所有的数据都会被load进主进程。（默认为0）</li>
+<li>collate_fn (callable, optional): 将一个list的sample组成一个mini-batch的函数</li>
+<li>pin_memory (bool, optional)： 如果设置为True，那么data loader将会在返回它们之前，将tensors拷贝到CUDA中的固定内存（CUDA pinned memory）中.</li>
+<li>drop_last (bool, optional): 如果设置为True：这个是对最后的未完成的batch来说的，比如你的batch_size设置为64，而一个epoch只有100个样本，那么训练的时候后面的36个就被扔掉了；如果为False（默认），那么会继续正常执行，只是最后的batch_size会小一点。</li>
+<li>timeout(numeric, optional): 如果是正数，表明等待从worker进程中收集一个batch等待的时间，若超出设定的时间还没有收集到，那就不收集这个内容了。这个numeric应总是大于等于0。默认为0</li>
+<li>worker_init_fn (callable, optional): 每个worker初始化函数 If not None, this will be called on each worker subprocess with the worker id (an int in [0, num_workers - 1]) as input, after seeding and before data loading. (default: None)</li>
+</ul>
+<p>一般重要的参数有：<code>dataset</code>, <code>batch_size</code>, <code>shuffle</code>, <code>num_workers</code>, <code>drop_last</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ranjiewen/p/10128046.html">DataLoader参考</a></p>
+<h2 id="自定义数据集"><a href="#自定义数据集" class="headerlink" title="自定义数据集"></a>自定义数据集</h2><ul>
+<li>自定义的数据集必须继承自<code>torch.utils.data.Dataset</code>。<code>torch.utils.data.Dataset</code>这个类是一个表示数据集的抽象类，负责处理索引(index)到样本(sample)映射的一个类(class)。Pytorch提供两种数据集： <strong>Map式数据集</strong> 和 <strong>Iterable式数据集</strong>。这里我们只介绍前者</li>
+<li>自定义的数据集中必须包含以下两种方法：<code>__getitem__</code>和<code>__len__</code>。其中<code>__getitem__</code>用于获取索引对应的样本，<code>__len__</code>方法用于获取样本长度。</li>
+<li>接下来提供构建的范式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDataset</span>(<span class="params">torch.utils.data.Dataset</span>):</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, file_path, transform, unaligned</span>):</span></span><br><span class="line">		<span class="comment">#<span class="doctag">TODO:</span> 加载各项参数，包括数据集路径，变换，是否通过index检索</span></span><br><span class="line">		self.file_path = file_path</span><br><span class="line">		self.transform = transform</span><br><span class="line">		self.unaligned = unaligned</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span>(<span class="params">self, index</span>):</span></span><br><span class="line">		item = self.file_path[index]</span><br><span class="line">		item = self.transform(item)</span><br><span class="line">		<span class="keyword">return</span> item</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>):</span></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">len</span>(self.file_path)</span><br></pre></td></tr></table></figure>
+<h1 id="训练过程相关"><a href="#训练过程相关" class="headerlink" title="训练过程相关"></a>训练过程相关</h1><h2 id="初始化：Model-apply-Initial"><a href="#初始化：Model-apply-Initial" class="headerlink" title="初始化：Model.apply(Initial)"></a>初始化：<code>Model.apply(Initial)</code></h2><h3 id="为什么要初始化？"><a href="#为什么要初始化？" class="headerlink" title="为什么要初始化？"></a>为什么要初始化？</h3><ol>
+<li>加快梯度下降的收敛速度</li>
+<li>更有可能获得一个低模型误差，或者低泛化误差的模型</li>
+<li>降低因为未初始化或初始化不当导致的梯度消失或者梯度爆炸问题。此情况会导致模型训练速度变慢，崩溃，甚至失败（如全连接层中，如果$W_{ij}$的每一个参数都很大，用Sigmoid作为激活函数，则会导致梯度消失）</li>
+<li>随机初始化，可以打破对成性，从而保证不同的隐藏单元可以学习到不同的东西。</li>
+</ol>
+<h3 id="如何初始化"><a href="#如何初始化" class="headerlink" title="如何初始化"></a>如何初始化</h3><ol>
+<li>预训练初始化</li>
+<li>全0初始化（线性回归，Logistics回归）</li>
+<li>固定值初始化<ul>
+<li>BN层，$\gamma$为1，$\beta$为0</li>
+<li>Bias通常用0初始化，对于ReLU激活的神经元，通常采用0.01偏置</li>
+</ul>
+</li>
+<li>固定方差初始化<ul>
+<li>高斯分布</li>
+<li>均匀分布</li>
+</ul>
+</li>
+<li>方差放缩初始化<ul>
+<li>Xavier初始化（ReLU较差）</li>
+<li>He初始化</li>
+</ul>
+</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li><code>weights_init_normal</code>函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">weights_init_normal</span>(<span class="params">m</span>):</span></span><br><span class="line"></span><br><span class="line">    classname = m.__class__.__name__</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> classname.find(<span class="string">&#x27;Conv&#x27;</span>) != -<span class="number">1</span>:</span><br><span class="line">        torch.nn.init.kaiming_normal_(m.weight.data, a=<span class="number">0.01</span>, mode=<span class="string">&#x27;fan_in&#x27;</span>, nonlinearity=<span class="string">&#x27;leaky_relu&#x27;</span>)</span><br><span class="line">        <span class="comment">#print(m.__class__.__name__, m.weight, m.bias)</span></span><br><span class="line">    <span class="keyword">elif</span> classname.find(<span class="string">&#x27;BatchNorm2d&#x27;</span>) != -<span class="number">1</span>:</span><br><span class="line">        torch.nn.init.constant(m.weight.data, <span class="number">1.0</span>)</span><br><span class="line">        torch.nn.init.constant(m.bias.data, <span class="number">0.0</span>)</span><br><span class="line">        <span class="comment">#print(m.__class__.__name__,m.weight, m.bias)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>训练初始化</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.apply(weights_init_normal)</span><br></pre></td></tr></table></figure>
+<h1 id="模型验证相关"><a href="#模型验证相关" class="headerlink" title="模型验证相关"></a>模型验证相关</h1><h2 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h2><ul>
+<li>在正向传播时，需要求导的变量除了执行<code>forward()</code>之外，还会同时为反向传播做一些准备</li>
+<li>叶子节点：当一个tensor是<strong>用户创建</strong>时(即用<code>torch.tensor()</code>等函数定义的，而非通过计算获得的)，他是一个叶子节点，当tensor时由其他运算操作产生时，不是叶子节点</li>
+<li>在<code>backward()</code>之后只有叶子节点相关的导数结果会被保存，而非叶子节点的导数结果会被抛弃（为了减小内存消耗）</li>
+</ul>
+<h2 id="中间层检验：hook"><a href="#中间层检验：hook" class="headerlink" title="中间层检验：hook"></a>中间层检验：<code>hook</code></h2><p>在对训练结果进行评判时，我们往往需要对网络的中间结果进行评估从而判断网络的注意力和权重分配等效果，通常有<strong>卷积核</strong>、特征图、梯度等。卷积核较后二者容易获得，但是特征图一经传递完成就会释放内存从而防止内存冗余，梯度方面，只保存节点梯度。在模型中增加中间结果保存操作可以实现中间结果的，但是会导致速度变慢、操作复杂、训练中产生大量数据等问题。所以需要用其他方法，而<code>hook</code>则是pytorch提供的一个较好的方法。包括以下函数：<code>Tensor.register_hook(hook_fn)</code>,<code>nn.Module.register_forward_hook(hook_fn)</code>,<code>nn.Module.register_backward_hook(hook_fn)</code></p>
+<h3 id="Tensor-register-hook-hook-fn"><a href="#Tensor-register-hook-hook-fn" class="headerlink" title="Tensor.register_hook(hook_fn)"></a><code>Tensor.register_hook(hook_fn)</code></h3><blockquote>
+<p>功能：注册一个反向传播的hook函数，用于自动记录Tensor的梯度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = torch.Tensor([<span class="number">1</span>,<span class="number">2</span>]).require_grad_()</span><br><span class="line">b = torch.Tensor([<span class="number">1</span>,<span class="number">2</span>]).require_grad_()</span><br><span class="line">d = torch.Tensor([<span class="number">1</span>,<span class="number">2</span>]).require_grad_()</span><br><span class="line">c = a + b</span><br><span class="line">e = c * d</span><br><span class="line">o = e.<span class="built_in">sum</span>()</span><br><span class="line">o.backward()</span><br></pre></td></tr></table></figure>
+<p>以上代码中，只有a,b,d为叶子节点，因此只有他们的导数被保留，其他导数，如c，d，e，o无导数，<code>o.grad</code>返回为None。下面通过<code>register_hook</code>方法给cdeo等非叶子节点的张量保留导数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hook_fn</span>(<span class="params">grad</span>):</span></span><br><span class="line">	print(grad)</span><br><span class="line">e.register_hook(hook_fn)</span><br><span class="line">o.backward()</span><br></pre></td></tr></table></figure><br>在对<code>o.backward()</code>时，自动执行张量<code>e</code>所关联的<code>hook_fn</code>，从而直接将<code>e</code>的导数打印出来</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
+<li>在反向传播前，定义一个<code>hook</code>函数，描述对梯度的操作，函数名自拟（一般为<code>hook_fn(grad)</code>），参数只有grad，表示梯度；</li>
+<li>对要获取梯度的张量进行<code>Tensor.register_hook(hook_fn)</code>注册</li>
+<li>执行反向传播，执行的过程中自动调用<code>hook_fn</code>函数</li>
+</ol>
+</blockquote>
+<h3 id="nn-Module-register-forward-hook-hook-fn-amp-nn-Module-register-backward-hook-hook-fn"><a href="#nn-Module-register-forward-hook-hook-fn-amp-nn-Module-register-backward-hook-hook-fn" class="headerlink" title="nn.Module.register_forward_hook(hook_fn)&amp;nn.Module.register_backward_hook(hook_fn)"></a><code>nn.Module.register_forward_hook(hook_fn)</code>&amp;<code>nn.Module.register_backward_hook(hook_fn)</code></h3><blockquote>
+<p>这两个操作对象都是<code>nn.Module</code>类，如神经网络中的卷积层<code>nn.Conv2d</code>，全连接层<code>nn.Linear</code>等。</p>
+</blockquote>
+<p>对于模型的中间模块，也可以视作中间节点（非叶子节点），其输出为<strong>特征图</strong>或<strong>激活值</strong>，若要获取，则可以用hook功能</p>
+<ul>
+<li><code>register_forward_hook</code>是前向传播的输出的，即特征图或激活值，而<code>register_backward_hook</code>是反向传播输出的，即梯度值</li>
+</ul>
+<h4 id="register-forward-hook-hook-fn"><a href="#register-forward-hook-hook-fn" class="headerlink" title="register_forward_hook(hook_fn)"></a><code>register_forward_hook(hook_fn)</code></h4><p>对于hook_fn的定义如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">forward_hook</span>(<span class="params">module, <span class="built_in">input</span>, output</span>):</span></span><br><span class="line">	operations</span><br></pre></td></tr></table></figure><br>module指的是模块，input指的是输入模块的内容，output指的是输出模块的内容。</p>
+<h4 id="register-backward-hook-hook-fn"><a href="#register-backward-hook-hook-fn" class="headerlink" title="register_backward_hook(hook_fn)"></a><code>register_backward_hook(hook_fn)</code></h4><p>对于hook_fn的定义如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backward_hook</span>(<span class="params">module, grad_in, grad_out</span>):</span></span><br><span class="line">	operations</span><br></pre></td></tr></table></figure><br>值得注意的是这里的<code>grad_in</code>和<code>grad_out</code>，这里的in和out都是相对于forward传递而言的。如线性模块$o=W\times x+b$，<code>grad_out</code>指的就是o的梯度；而grad_in因为有三个变量，因此他是包含三个元素的tuple</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">        self.relu1 = nn.ReLU()</span><br><span class="line">        self.pool1 = nn.MaxPool2d(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">        self.relu2 = nn.ReLU()</span><br><span class="line">        self.pool2 = nn.MaxPool2d(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">8</span>*<span class="number">8</span>*<span class="number">9</span>, <span class="number">120</span>)</span><br><span class="line">        self.relu3 = nn.ReLU()</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">120</span>,<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        out = self.pool1(self.relu1(self.conv1(x)))</span><br><span class="line">        out = self.pool2(self.relu2(self.conv2(out)))</span><br><span class="line">        out = out.view(out.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">        out = self.relu3(self.fc1(out))</span><br><span class="line">        out = self.fc2(out)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backward_hook</span>(<span class="params">module, grad_in, grad_out</span>):</span></span><br><span class="line">    grad_block[<span class="string">&#x27;grad_in&#x27;</span>] = grad_in</span><br><span class="line">    grad_block[<span class="string">&#x27;grad_out&#x27;</span>] = grad_out</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">farward_hook</span>(<span class="params">module, inp, outp</span>):</span></span><br><span class="line">    fmap_block[<span class="string">&#x27;input&#x27;</span>] = inp</span><br><span class="line">    fmap_block[<span class="string">&#x27;output&#x27;</span>] = outp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loss_func = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一个假标签以便演示</span></span><br><span class="line">label = torch.empty(<span class="number">1</span>, dtype=torch.long).random_(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成一副假图像以便演示</span></span><br><span class="line">input_img = torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>).requires_grad_()  </span><br><span class="line"></span><br><span class="line">fmap_block = <span class="built_in">dict</span>()  <span class="comment"># 装feature map</span></span><br><span class="line">grad_block = <span class="built_in">dict</span>()  <span class="comment"># 装梯度</span></span><br><span class="line"></span><br><span class="line">net = Net()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注册hook</span></span><br><span class="line">net.conv2.register_forward_hook(farward_hook)</span><br><span class="line">net.conv2.register_backward_hook(backward_hook)</span><br><span class="line"></span><br><span class="line">outs = net(input_img)</span><br><span class="line">loss = loss_func(outs, label)</span><br><span class="line">loss.backward()</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;End.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>参考网站：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/69e57e3526b3">PyTorch之HOOK——获取神经网络特征和梯度的有效工具</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Deep-learning/" rel="tag"># Deep learning</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Coding/" rel="tag"># Coding</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/24/DCGAN/" rel="prev" title="DCGAN">
+      <i class="fa fa-chevron-left"></i> DCGAN
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/17/yolox-env/" rel="next" title="yolox_env">
+      yolox_env <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Snippets-for-Pytorch"><span class="nav-number">1.</span> <span class="nav-text">Snippets for Pytorch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">数据集相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#torch-utils-data-DataLoader"><span class="nav-number">2.1.</span> <span class="nav-text">torch.utils.data.DataLoader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pytorch%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">pytorch数据加载流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataLoader%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.1.2.</span> <span class="nav-text">DataLoader详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">2.2.</span> <span class="nav-text">自定义数据集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E7%9B%B8%E5%85%B3"><span class="nav-number">3.</span> <span class="nav-text">训练过程相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9AModel-apply-Initial"><span class="nav-number">3.1.</span> <span class="nav-text">初始化：Model.apply(Initial)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F"><span class="nav-number">3.1.1.</span> <span class="nav-text">为什么要初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.2.</span> <span class="nav-text">如何初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E9%AA%8C%E8%AF%81%E7%9B%B8%E5%85%B3"><span class="nav-number">4.</span> <span class="nav-text">模型验证相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">一些基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E5%B1%82%E6%A3%80%E9%AA%8C%EF%BC%9Ahook"><span class="nav-number">4.2.</span> <span class="nav-text">中间层检验：hook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tensor-register-hook-hook-fn"><span class="nav-number">4.2.1.</span> <span class="nav-text">Tensor.register_hook(hook_fn)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nn-Module-register-forward-hook-hook-fn-amp-nn-Module-register-backward-hook-hook-fn"><span class="nav-number">4.2.2.</span> <span class="nav-text">nn.Module.register_forward_hook(hook_fn)&amp;nn.Module.register_backward_hook(hook_fn)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#register-forward-hook-hook-fn"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">register_forward_hook(hook_fn)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#register-backward-hook-hook-fn"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">register_backward_hook(hook_fn)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="生产队的猪"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">生产队的猪</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">生产队的猪</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

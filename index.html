@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"Trebuchet","show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="生产队的猪窝">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="生产队的猪窝">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="生产队的猪">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>生产队的猪窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">生产队的猪窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/17/Sounds/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/17/Sounds/" class="post-title-link" itemprop="url">声之向往</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-17 13:31:11 / 修改时间：06:01:14" itemprop="dateCreated datePublished" datetime="2022-07-17T13:31:11Z">2022-07-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="声之向往"><a href="#声之向往" class="headerlink" title="声之向往"></a>声之向往</h1><p>音乐大概是四年时间中，除了床之外接触最多的事物。高中时期没有手机，只能在晚自修前的校园广播台，或是趁着教室人少，偷偷（光明正大）地去放教室电脑内的存货。大学后有了手机，便有了听歌自由，听歌就变得愈发猖狂起来，一首全长42:56的《The dark side of the moon》，耳机一带一摘，一节课就过去了。耳机也不知换了几对，从买手机送的，四六级考试买的有线耳机，到朋友送的TWS蓝牙耳机，到真无线耳机，蓝牙音箱。近期Science的一项研究表明，声音能够通过皮质丘脑回路起到镇痛作用<sup>[1]</sup>（虽然是5dB SNR的白噪声）,但这也许是我听歌的原因之一（”<em>Well I can ease your pain, Get you on your feet again</em>“）。</p>
+<h2 id="大一-大二秋冬"><a href="#大一-大二秋冬" class="headerlink" title="大一-大二秋冬"></a>大一-大二秋冬</h2><p>受到高中班级“音乐氛围”影响，大一大二时期听歌的曲目主要集中在摇滚和沙雕小情歌。由于个人理解能力有限，我听不懂大多数摇滚，只是觉得那些旋律和节奏充满力量。而这些力量可以很好地表达当时我内心的无端的愤怒，再加上一些隐晦的歌词的联系，可以很好地安抚我内心对现实的不满。主要听的歌手/乐队包括Pink Floyd，“南京市民李先生”，唐朝，Metallica，万青，痛仰等。大一大二的大多数空闲时间都独自在东一五楼的自习室中刷题度过，从微积分ⅠⅡⅢ，线代，普物ⅠⅡ，C小C大，到有机，概统，电原，数电，常微偏微复变。高中养成的古怪嗜好依旧延续到了大学，在刷题中获取快感，就算与专业毫无干系，但是解题结果和答案的一致，PTA中满屏的绿色勾勾总让我感到快乐，甚至上头；但是每次做题卡壳，PTA中那个永远消除不了的叉叉，总让我恼火。这时候，我一般会把耳机开到我生理承受范围的极大值，把自己淹没在鼓点、电吉他的延音、各种迷幻的效果和主唱的嘶吼中。</p>
+<p>Metallica的《Fade to Black》和《Nothing Else Matters》总成为我考炸后的安慰。万青开头看似散漫的唱调，但总在歌曲的某些地方迸发出呐喊，“<em>是谁来自山川湖海，却囿于昼夜厨房与爱</em>”，来时充满梦想，有走遍五湖四海的勇气，但终究为生活所困；“于是他默默追逐着，横渡海峡，年轻的人，看着他们，为了彼岸，骄傲地，骄傲的灭亡”，一长串休止符后，在阵阵逐渐密集的鼓点中，为了追求终极而骄傲地燃烧自我，让我联想到刺猬的“<em>生如烟花，炸开自己纵情燃烧吧</em>”。在南京市民李先生还没有下架前，我最常听那些最为人所知的歌曲：《关于郑州的记忆》，《梵高先生》，《这个世界会好吗》，《我们不能失去信仰》，《热河》等，“<em>似是而非或是世事可畏，有情有义又是有米无炊</em>”，我到现在还是没太理解这句话，纯粹觉得好听；“<em>生命曾经闪耀思想的荣光，我们不能，不能失去信仰</em>”，在下架后，找到了一些相关的现场资源，第一次听电声与管弦乐，还是很震撼的。</p>
+<p>东一A五楼没有饮水机，我常常去东一B四楼倒水。去倒水时，我常常会在东一B五楼的天台处看天，看鸟，看启真湖，或是在天桥看看远处的<del>雪山</del>灯火。这时候常会听PF的《High Hopes》、《Marooned》，《Wish You Were Here》，《Echoes》等。晚自习结束，骑着单车滑行在空无一人的文广，有时候会遇见轮滑社的同学，如果运气好，文广地面的积水倒映着南方天空的月亮，“<em>珠碎点点清 玉水河塘 鳞鳞月破去 心泉摇晃 今宵对昨夜 明空浩荡 残思追穹方 月已西往…我要抚摸你</em>”，这大概是我听过的最美的歌。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/essay1.png" alt="大一"></p>
+<p>而那些思政课程和部分通识课，总让我感到愤怒和不屑，思修，史纲，马原，毛概，我愿称之为“四大jin’gang”（危，就没一门课上3.6的）。学生活动和社会实践，总存在这样或是那样的令人不爽；“<em>不，要相信规矩；不，要相信秩序；不，要相信严肃；不，要相信贵贱；不，要相信尊卑；不，要相信傀儡；不，要相信权威；不，要相信稳定；不，要相信繁荣</em>”，虽然这是一首口号歌，但是就是爽；就和去迪拜的爽一样，就像去西安的爽一样，就像在台上指点江山的爽一样，他们一直在互联网的记忆中。但现在看来，我的这些想法可笑幼稚。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/essay2.png" alt="黑子"></p>
+<h2 id="大二春夏·疫情"><a href="#大二春夏·疫情" class="headerlink" title="大二春夏·疫情"></a>大二春夏·疫情</h2><p>大二下，疫情围困在家。我的心态就出现了一点小变化，现在一度怀疑自己当时的状态是抑郁的可能性。而从这段时间开始，大概就是四年的转折，无论是精神还是身体，不能说是一蹶不振吧，只能说是每况愈下。大概从这个时候开始听朴师傅、刺猬乐队和谢天笑。始终围困在家中让我倍感焦虑，每一次返校的机会，我都申请了，但是由于年少无知，被坑蒙拐骗，多次妥协，最终还是伤害了自己，直到暑假才申请成功。那段时间，常常骑着小龟去水库旁转。常听的是《No Fear in My Hear》，这整首歌仿佛都在描述我的困境和奢望。《我去2000年》是朴树的第一张专辑，很难受地看到，专辑中的第一首《New Boys》被滥用到各种奇奇怪怪的地方，被各种奇奇怪怪的甜腻嗓音唱出来。其实我觉得整张专辑的情绪是迷惘和愤怒的。专辑里最常听的是《妈妈，我…》、《活着》和《我去2000年》。“<em>他们是些有轨电车，终日往返工厂和住房，他们关心粮食关心电视，他们无所事事，看到他们我感到很难过，上班下班的植物人流，在菜市场里，人行道上，他们冷漠地走着，妈妈，那里面有你</em>”。在困在家中的时间里，我一日又一日地重复着一样地生活，看到重复的人，做他们做重复的事情，仿佛自己被围困在巨大的迷宫中，兜兜转转，又回到原地（”<em>steps taken forwards but sleepwalking back again</em>“）；最后一句“<em>知道吗，我是金子，我要闪光的</em>”仅仅是在自我安慰罢了，我也是我所谓重复的人中的一个，每日活成一个样子。<br>“<em>隔壁老张对我讲，年轻时我和你一样狂，天不怕，地不怕，大碗喝酒，大块地吃肉；后来摔了跟头，老了，就变得谨小与甚微，就忘了梦想只乞求能够平安地活着</em>”。因为出于对形式主义的厌恶，我对学院的某些政策和要求不屑一顾，但最后搞得自己非常难堪，最后不得不跪着舔着把事情填补完了；坚持自己的想法总是要付出代价，那为何不躺平让别人牵着你的鼻子走呢？或者段位再高一点，见机行事，见风使舵，别人出彩你就喝彩，别人出丑你就跑路，也许没有脑子才是最轻松的活法？最后还是活成了老张。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/essay3.png" alt="疫情"></p>
+<h2 id="大三-大四秋冬"><a href="#大三-大四秋冬" class="headerlink" title="大三-大四秋冬"></a>大三-大四秋冬</h2><p>这大概是四年中的至暗时刻，“<em>崭新万物正上升幻灭如明星，我却乌云遮目；崭新万物正上升幻灭如明星，乌云遮目</em>”。别人的大三大四，是渴望从平凡到不平凡，而我却苦苦哀求，希望从不平凡变得平凡。我失去了大一大二时的力量和思想，就想活成普通人，别人卷地像生产队地驴，文章批量生产，而我却奢求活成生产队的猪，至少只需要承受最后一刻被宰杀时的痛苦。有人说杀不死你的，只会让你变得更强大，而我的感受是相反的，痛苦是会消磨、蚕食人的意志的。我几乎不再听摇滚，而是一些软绵绵的没有力量的靡靡之音。但就算乌云再浓厚，总有阳光投射进来，“<em>这是如此不可思议的光芒，照亮了这世界，来自你无尽的爱，照亮我生命，也照亮了我的心</em>”，因为这些光芒，我才能“<em>生生不息</em>”。同时，我又开始作死，给自己报了SRTP，深度科研，一个比赛，又加上毕设，我深深地怀疑自己能否顺利毕业，虽然到后来不得不承认这些都挺水，但在当时看来，简直就是痴人说梦。其实这一段可以写的实在太多了，但是真的不想再回忆那些阳光照不到的黑暗角落，所以就这样吧。</p>
+<h2 id="大四春夏"><a href="#大四春夏" class="headerlink" title="大四春夏"></a>大四春夏</h2><p>大四春夏，搬回紫金港，完成了大四秋冬留下的所有烂摊子，顺利毕业，这实在是我应该感恩的事情。3月打完比赛（虽然我也只是打打酱油，主要还是队友C），四月五月完成毕设，六月完成SRTP与深度科研结项，六月中下磕磕绊绊地考完最后两门考试，放在5个月前，这都是我不敢想的事情。这段时间，非常幸运地找到了许巍2015年在北京《此时此刻》演唱会视频，以及后来2019《无尽光芒》演唱。这两次演唱会常常给我带来温暖，伴我度过焦虑、不安和紧张。佛法摇滚，真的充满力量，但又不狂躁。亮子的电吉他，贝贝的键盘，苏格兰老大爷的架子鼓，陈悦的笛子，窦颖的和声。正如在《故乡》这段里听众大声喊出的“牛逼”，真的牛逼。在《空谷幽兰》中吉他的solo与笛声遥相呼应，“<em>慧行坚勇究畅恒无极</em>”。《漫步》： “<em>让他自然地来吧，让他悄然地去吧，就这样微笑的看着自己，漫步在这人生里</em>”；《救赎之旅》：“<em>生生不息，向着灿烂的终极；一直以来，在心中的梦想，是用一生，改变这个世界…我被你的爱拯救</em>”；《灵岩》：“<em>迷惘坚定交织的旅程，远比开始预料的艰难，也更曲折，丰富多彩</em>”，“<em>你恩赐什么样的旅程给我，要用尽一生来感知，为何在经历过后我才觉醒，你对我的爱，无与伦比</em>”。《旅行》：“<em>谁画出这天地，又画下我和你，让我们的世界绚丽多彩</em>”，每次在阳台看到夕阳下的变幻莫测的天空，都会想起这句。《只有爱》：“<em>有些经历，我不愿回头，有些记忆，却永远在心里</em>”，“<em>只有爱，才能让我觉醒，即使有烈火，燃烧我的心</em>”；《无尽光芒》：“<em>愿所有的悲伤，都化作所有喜悦的力量，就像你爱这世界，你无尽的光芒</em>”；《我不猜》这首歌也同样融入了部分弦乐program，“<em>我不猜，也不徘徊，此刻青山，在眼前</em>”。最后一首《夕阳中的城市》，节奏平缓。吃完每次晚饭躺在古籍馆的朝南的沙发上，望着巨大落地窗外，天空中斜射进来的夕阳，在末尾电吉他，键盘，架子鼓的交替solo中睡去，听到尽兴处，还会随手比划比划（字是真的烂）。夕阳和橘黄色的灯光，陪伴我度过写论文、de bug、和复习组胚的时光。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/essay4.png" alt="大四"><br><img src="http://fang-bnn.gitee.io/image_bed/bed/essay5.png" alt="乱写"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>毕业了，对别人来说，随便搞搞就能毕业；对我来说能顺利毕业真的不容易。一直想着能写些什么，但想来想去总是不知写些什么。按照惯例，我只会写写流水账，或是阴阳怪气地写些俏皮话。我不想做喷子，也不想做日记本，也不想做编译器。我只想审视自己，奈何读的书实在太少，嘴上也就剩下几句诸如“真的C”，“只能是寄”，“真的帅”之类的语气词。所以拾人牙慧，借助别人的语言，表达一些想法。<br>最后，还是用别人的歌词（刺猬乐队·《勐巴拉娜西》），表达祝福：</p>
+<p><em>在幻妙的时间里有望喜和奇遇<br>在嘈杂的城市里有永恒的相遇<br>在有生之年里常相伴有知己<br>在曼妙的年龄享有诚挚的爱情</em></p>
+<h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a><strong>Citation</strong></h2><p>[1] Zhou W, Ye C, Wang H, et al. Sound induces analgesia through corticothalamic circuits[J]. Science, 2022, 377(6602): 198-204.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/LigandProteinInteraction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/28/LigandProteinInteraction/" class="post-title-link" itemprop="url">蛋白配体互作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-28 11:50:52" itemprop="dateCreated datePublished" datetime="2022-06-28T11:50:52Z">2022-06-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-11 03:10:17" itemprop="dateModified" datetime="2022-07-11T03:10:17Z">2022-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">生信</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文以AP和LDHB_MOUSE互作为例，进行说明<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/28/LigandProteinInteraction/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/MMCore%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/28/MMCore%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">MMCore配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-28 10:34:12 / 修改时间：02:40:10" itemprop="dateCreated datePublished" datetime="2022-02-28T10:34:12Z">2022-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MMCore/" itemprop="url" rel="index"><span itemprop="name">MMCore</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="MMCore配置（Windows）"><a href="#MMCore配置（Windows）" class="headerlink" title="MMCore配置（Windows）"></a>MMCore配置（Windows）</h1><ol>
+<li>下载<a target="_blank" rel="noopener" href="https://micro-manager.org/Download_Micro-Manager_Latest_Release">Micro-Manager GUI</a></li>
+<li>根据<a target="_blank" rel="noopener" href="https://github.com/micro-manager/pymmcore">pymmcore github</a>主页中的信息创建虚拟环境<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip <span class="keyword">install</span> pymmcore</span><br></pre></td></tr></table></figure>
+基本上第一次install会失败，再install一次就没问题了</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">好的博客笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-19 22:14:02" itemprop="dateCreated datePublished" datetime="2022-02-19T22:14:02Z">2022-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-11 03:10:14" itemprop="dateModified" datetime="2022-07-11T03:10:14Z">2022-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Daily/" itemprop="url" rel="index"><span itemprop="name">Daily</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="好的博客和笔记汇总"><a href="#好的博客和笔记汇总" class="headerlink" title="好的博客和笔记汇总"></a>好的博客和笔记汇总</h1><p>日常中看到的好用的笔记和博客汇总帖，感谢各路大神辛苦的码字，才使得我们能够轻松地获得许多原本需要更多精力才能获取的知识。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/12/ConvTranspose2d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/12/ConvTranspose2d/" class="post-title-link" itemprop="url">ConvTranspose2d</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-12 13:04:56" itemprop="dateCreated datePublished" datetime="2022-02-12T13:04:56Z">2022-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-11 03:10:33" itemprop="dateModified" datetime="2022-07-11T03:10:33Z">2022-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Pytorch/" itemprop="url" rel="index"><span itemprop="name">Pytorch</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ConvTranspose2d的理解和计算"><a href="#ConvTranspose2d的理解和计算" class="headerlink" title="ConvTranspose2d的理解和计算"></a>ConvTranspose2d的理解和计算</h1><p>DeConv是Convolution的逆过程，但是和在Pytorch中却和Conv共享相同的参数，所以较难计算和理解。本文分析ConvTranspose2d的计算过程。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/12/ConvTranspose2d/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E8%A3%85NVIDIA%E9%A9%B1%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E8%A3%85NVIDIA%E9%A9%B1%E5%8A%A8/" class="post-title-link" itemprop="url">Linux服务器重装NVIDIA驱动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-05 19:37:21" itemprop="dateCreated datePublished" datetime="2022-02-05T19:37:21Z">2022-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-11 03:11:01" itemprop="dateModified" datetime="2022-07-11T03:11:01Z">2022-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/log/" itemprop="url" rel="index"><span itemprop="name">log</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Linux服务器重装NVIDIA驱动"><a href="#Linux服务器重装NVIDIA驱动" class="headerlink" title="Linux服务器重装NVIDIA驱动"></a>Linux服务器重装NVIDIA驱动</h1><p>Ubuntu服务器在某次重启后，NVIDIA驱动失效，在输入<code>nvidia-smi</code>后结果如下：<br><img src="http://fang-bnn.gitee.io/image_bed/bed/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220205194104.jpg" alt="驱动加载失败"><br>经过兄弟提示，可能是因为Ubuntu重启后发生了更新，使得其与旧的NVIDIA驱动不匹配，因此卸载了旧的NVIDIA驱动，并从官网上下载最新的驱动并安装。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E8%A3%85NVIDIA%E9%A9%B1%E5%8A%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/21/Cpp-Firstclass/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/21/Cpp-Firstclass/" class="post-title-link" itemprop="url">Cpp_Firstclass</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-21 13:36:25" itemprop="dateCreated datePublished" datetime="2021-10-21T13:36:25Z">2021-10-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-11 03:11:18" itemprop="dateModified" datetime="2022-07-11T03:11:18Z">2022-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cpp/" itemprop="url" rel="index"><span itemprop="name">Cpp</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Cpp第一个Cpp程序"><a href="#Cpp第一个Cpp程序" class="headerlink" title="Cpp第一个Cpp程序"></a>Cpp第一个Cpp程序</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/21/Cpp-Firstclass/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/28/Code-Fragment/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/28/Code-Fragment/" class="post-title-link" itemprop="url">Code Fragment</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 23:13:50" itemprop="dateCreated datePublished" datetime="2021-09-27T23:13:50Z">2021-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-08 04:31:20" itemprop="dateModified" datetime="2021-10-08T04:31:20Z">2021-10-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h1><blockquote>
+<p>为方便coding，打算把一些固定的，便携的代码收录下来方便以后直接拿来吧你</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/28/Code-Fragment/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/18/anchor-box/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/18/anchor-box/" class="post-title-link" itemprop="url">anchor box</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 17:13:07" itemprop="dateCreated datePublished" datetime="2021-09-17T17:13:07Z">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-27 15:11:35" itemprop="dateModified" datetime="2021-09-27T15:11:35Z">2021-09-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Yolo/" itemprop="url" rel="index"><span itemprop="name">Yolo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Anchor-Box"><a href="#Anchor-Box" class="headerlink" title="Anchor Box"></a>Anchor Box</h1><p> Anchor boxex是学习卷积神经网络用于目标识别过程中最重要且最难理解的一个概念。这个概念最初是在Faster R-CNN中提出，之后在诸多优秀的目标识别中得到验证，本文主要参考自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/63024247">锚框: Anchor box综述</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/18/anchor-box/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/17/yolox-env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="生产队的猪">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="生产队的猪窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/17/yolox-env/" class="post-title-link" itemprop="url">yolox_env</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-17 10:03:13 / 修改时间：09:14:25" itemprop="dateCreated datePublished" datetime="2021-09-17T10:03:13Z">2021-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/log/" itemprop="url" rel="index"><span itemprop="name">log</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="YOLOX环境配置历程"><a href="#YOLOX环境配置历程" class="headerlink" title="YOLOX环境配置历程"></a>YOLOX环境配置历程</h1><p>主要过程参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39056987/article/details/119002910">这篇大佬博客</a>，但是期间遇到了诸多问题，尝试配置并最终解决，呜呼。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/17/yolox-env/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="生产队的猪"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">生产队的猪</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">生产队的猪</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
