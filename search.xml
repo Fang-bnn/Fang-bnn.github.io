@@ -260,23 +260,6 @@ D_{\mathrm{KL}}\left(q_{m}^{i} \| q^{i}\right) &=\int q_{m}^{i}(z) \log \frac{q_
       </tags>
   </entry>
   <entry>
-    <title>Code Fragment</title>
-    <url>/2021/09/28/Code-Fragment/</url>
-    <content><![CDATA[<h1 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h1><blockquote>
-<p>为方便coding，打算把一些固定的，便携的代码收录下来方便以后直接拿来吧你</p>
-</blockquote>
-<span id="more"></span>
-<ul>
-<li>获取目录下的所有（指定名称或格式）文件</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">files_A = <span class="built_in">sorted</span>(glob.glob(os.path.join(rootA, <span class="string">&#x27;*.*&#x27;</span>)))</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/GeorgeAI/article/details/81035422">glob.glob()的用法</a></p>
-<ul>
-<li>新建文件夹，若存在，则全部删除</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_create</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename):</span><br><span class="line">        print(<span class="string">&#x27;found exist file and remove it&#x27;</span>)</span><br><span class="line">        shutil.rmtree(filename)</span><br><span class="line">        os.mkdir(filename)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(filename)</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>ConvTranspose2d</title>
     <url>/2022/02/12/ConvTranspose2d/</url>
     <content><![CDATA[<h1 id="ConvTranspose2d的理解和计算"><a href="#ConvTranspose2d的理解和计算" class="headerlink" title="ConvTranspose2d的理解和计算"></a>ConvTranspose2d的理解和计算</h1><p>DeConv是Convolution的逆过程，但是和在Pytorch中却和Conv共享相同的参数，所以较难计算和理解。本文分析ConvTranspose2d的计算过程。<br><span id="more"></span></p>
@@ -307,17 +290,21 @@ i=so-s+k-2p=\frac{[o+(s-1)(o-1)]+[(k-1)+(k-2p-1)]-k}{1}+1</script><p>令$i’=o+
       </tags>
   </entry>
   <entry>
-    <title>Cpp_Firstclass</title>
-    <url>/2021/10/21/Cpp-Firstclass/</url>
-    <content><![CDATA[<h1 id="Cpp第一个Cpp程序"><a href="#Cpp第一个Cpp程序" class="headerlink" title="Cpp第一个Cpp程序"></a>Cpp第一个Cpp程序</h1><span id="more"></span>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostrem&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Hello, World I am&quot;</span> &lt;&lt; <span class="number">18</span> &lt;&lt; <span class="string">&quot;Today!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="读输入"><a href="#读输入" class="headerlink" title="读输入"></a>读输入</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter a demical number: &quot;</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; number;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The number you entered is &quot;</span> &lt;&lt; number &lt;&lt; <span class="string">&quot;.&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Cpp</category>
-      </categories>
-      <tags>
-        <tag>Cpp</tag>
-      </tags>
+    <title>Code Fragment</title>
+    <url>/2021/09/28/Code-Fragment/</url>
+    <content><![CDATA[<h1 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h1><blockquote>
+<p>为方便coding，打算把一些固定的，便携的代码收录下来方便以后直接拿来吧你</p>
+</blockquote>
+<span id="more"></span>
+<ul>
+<li>获取目录下的所有（指定名称或格式）文件</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">files_A = <span class="built_in">sorted</span>(glob.glob(os.path.join(rootA, <span class="string">&#x27;*.*&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/GeorgeAI/article/details/81035422">glob.glob()的用法</a></p>
+<ul>
+<li>新建文件夹，若存在，则全部删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_create</span>(<span class="params">filename</span>):</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(filename):</span><br><span class="line">        print(<span class="string">&#x27;found exist file and remove it&#x27;</span>)</span><br><span class="line">        shutil.rmtree(filename)</span><br><span class="line">        os.mkdir(filename)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        os.mkdir(filename)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>DCGAN</title>
@@ -379,6 +366,19 @@ i=so-s+k-2p=\frac{[o+(s-1)(o-1)]+[(k-1)+(k-2p-1)]-k}{1}+1</script><p>令$i’=o+
         <tag>Deep learning</tag>
         <tag>GAN</tag>
         <tag>Aritcle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cpp_Firstclass</title>
+    <url>/2021/10/21/Cpp-Firstclass/</url>
+    <content><![CDATA[<h1 id="Cpp第一个Cpp程序"><a href="#Cpp第一个Cpp程序" class="headerlink" title="Cpp第一个Cpp程序"></a>Cpp第一个Cpp程序</h1><span id="more"></span>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostrem&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Hello, World I am&quot;</span> &lt;&lt; <span class="number">18</span> &lt;&lt; <span class="string">&quot;Today!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="读输入"><a href="#读输入" class="headerlink" title="读输入"></a>读输入</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter a demical number: &quot;</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; number;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The number you entered is &quot;</span> &lt;&lt; number &lt;&lt; <span class="string">&quot;.&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Cpp</category>
+      </categories>
+      <tags>
+        <tag>Cpp</tag>
       </tags>
   </entry>
   <entry>
@@ -545,50 +545,6 @@ D_{G}^{*}(\boldsymbol{x})=\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {dat
       </tags>
   </entry>
   <entry>
-    <title>PyQt5信号槽机制(一)</title>
-    <url>/2021/08/15/Qt-2/</url>
-    <content><![CDATA[<h1 id="PyQt5信号槽机制-一"><a href="#PyQt5信号槽机制-一" class="headerlink" title="PyQt5信号槽机制(一)"></a>PyQt5信号槽机制(一)</h1><blockquote>
-<p>信号槽是Qt的核心机制，也是PyQt中编程的通信机制，在Qt中，QObject对象和PyQt中所有继承自QWidget的控件都支持信号机制。当信号发射时，连接的<strong>槽函数</strong>会自动执行。在PyQt5中，信号和槽函数通过<code>object.signal.connect()</code>方法进行连接。<br><span id="more"></span></p>
-</blockquote>
-<h2 id="信号槽（slot）简介"><a href="#信号槽（slot）简介" class="headerlink" title="信号槽（slot）简介"></a>信号槽（slot）简介</h2><p>信号槽特点如下：</p>
-<ol>
-<li>一个信号可以连接多个槽</li>
-<li>一个信号可以连接另一个信号</li>
-<li>信号参数可以是任意Python类型</li>
-<li>一个槽可以监听任意多个信号</li>
-<li>信号与槽之间的连接方式可以是同步连接，也可以是异步连接</li>
-<li>信号与槽的连接可以跨线程</li>
-<li>信号可以断开<br>在编写一个类的时候，要首先定义类的<strong>信号和槽</strong>，在类的信号与槽进行连接，实现对象之间的数据传输。当事件或状态发生改变时，会发出信号，进而出发<strong>执行事件</strong>或信号相关联的<strong>槽函数</strong><br><img src="http://fang-bnn.gitee.io/image_bed/bed/%E6%A7%BD%E4%BF%A1%E5%8F%B7.png" alt="槽信号"></li>
-</ol>
-<h3 id="定义信号"><a href="#定义信号" class="headerlink" title="定义信号"></a>定义信号</h3><p>PyQt内置信号是自动定义的，使用<code>PyQt5.QtCore.pyqtSignal</code>函数可以为QObject对象创建一个信号，使用pyqtSignal函数可以把信号定义为类的属性。pyqtSignal的原型如下<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pyqtSignal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, *types, name: <span class="built_in">str</span>= ...</span>) -&gt; <span class="keyword">None</span>:</span> ...</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><code>type</code>：表示定义信号时参数的类型</li>
-<li><code>name</code>：表示信号的名称，默认使用<strong>类的属性名称</strong><br>使用<code>pyqtSignal</code>函数创建一个或多个重载的未绑定的信号作为类的属性，信号只能在<code>QObject</code>的子类中定义。信号必须在类创建时定义，<strong>不能在类创建后作为类的属性动态添加进来</strong>。使用pyqtSignal函数定义信号时，信号可以传递多各参数，并指定信号传递参数的类型，参数类型是标准的Python数据类型，包括<strong>字符串、日期、布尔类型、数字、列表、字典、元组</strong>。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal, QObject</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StandardItem</span>(<span class="params">QObject</span>):</span></span><br><span class="line">    data_changed = pyqtSignal(<span class="built_in">str</span>, <span class="built_in">str</span>, name=<span class="string">&#x27;dataChanged&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.dataChanged.emit(<span class="string">&quot;old status&quot;</span>,<span class="string">&quot;new status&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="操作信号"><a href="#操作信号" class="headerlink" title="操作信号"></a>操作信号</h3><ul>
-<li><code>connect</code>函数：将信号绑定到槽函数上，<code>QObject.signal.connect(self, slot, type=None, no_receiver_check=False)</code></li>
-<li><code>disconnect</code>函数：将信号解绑，<code>QObject.signal.disconnect(self, slot=None)</code></li>
-<li><code>emit</code>函数：发射信号，<code>emit(self, *args)</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal, QObject</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StandardItem</span>(<span class="params">QObject</span>):</span></span><br><span class="line">    data_changed = pyqtSignal(<span class="built_in">str</span>, <span class="built_in">str</span>, name=<span class="string">&#x27;dataChanged&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.dataChanged.emit(<span class="string">&quot;old status&quot;</span>,<span class="string">&quot;new status&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onDataChanged</span>(<span class="params">self, old, new</span>):</span></span><br><span class="line">        print(old)</span><br><span class="line">        print(new)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QCoreApplication(sys.argv)</span><br><span class="line">    item = StandardItem()</span><br><span class="line">    item.dataChanged.connect(item.onDataChanged)</span><br><span class="line">    item.update()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br><span class="line"><span class="comment">###############</span></span><br><span class="line"><span class="comment">#####OUTPUT####</span></span><br><span class="line"><span class="comment">###############</span></span><br><span class="line"><span class="comment"># old status</span></span><br><span class="line"><span class="comment"># new status</span></span><br></pre></td></tr></table></figure>
-<h2 id="信号槽与应用"><a href="#信号槽与应用" class="headerlink" title="信号槽与应用"></a>信号槽与应用</h2><h3 id="内置信号与自定义槽函数"><a href="#内置信号与自定义槽函数" class="headerlink" title="内置信号与自定义槽函数"></a>内置信号与自定义槽函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClose)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<p>这里，<code>button.click()</code>就是一个内置信号，他与onClose槽函数连接。而用户按下的动作即为发射。点击按钮时触发按钮内置的clicked信号，执行绑定的自定义槽函数onClose。</p>
-<h3 id="自定义信号和内置槽函数"><a href="#自定义信号和内置槽函数" class="headerlink" title="自定义信号和内置槽函数"></a>自定义信号和内置槽函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    closeSignal = pyqtSignal()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClose)</span><br><span class="line">        <span class="comment"># 连接自定义信号closeSignal与内置槽函数close</span></span><br><span class="line">        self.closeSignal.connect(self.close)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 发送自定义信号</span></span><br><span class="line">        self.closeSignal.emit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<p>通过<strong>内置信号</strong><code>click</code>连接到<strong>自定义槽函数</strong>，槽函数中触发<strong>自定义信号</strong>的发射，从而触发<strong>内置槽函数</strong><code>QWidget.close()</code>函数</p>
-<h3 id="自定义信号和自定义槽函数"><a href="#自定义信号和自定义槽函数" class="headerlink" title="自定义信号和自定义槽函数"></a>自定义信号和自定义槽函数</h3><p>结合上述两种方法，大同小异</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    closeSignal = pyqtSignal()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClicked)</span><br><span class="line">        <span class="comment"># 连接自定义信号closeSignal与内置槽函数close</span></span><br><span class="line">        self.closeSignal.connect(self.onClose)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClicked</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 发送自定义信号</span></span><br><span class="line">        self.closeSignal.emit()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
-<p>参考自:<br><a href="https://blog.51cto.com/u_9291927/2422187">PyQt5快速入门（二）PyQt5信号槽机制</a></p>
-]]></content>
-      <categories>
-        <category>PyQt5</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>PyQt5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pytorch</title>
     <url>/2021/09/14/Pytorch/</url>
     <content><![CDATA[<h1 id="Snippets-for-Pytorch"><a href="#Snippets-for-Pytorch" class="headerlink" title="Snippets for Pytorch"></a>Snippets for Pytorch</h1><blockquote>
@@ -700,6 +656,50 @@ D_{G}^{*}(\boldsymbol{x})=\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {dat
       </tags>
   </entry>
   <entry>
+    <title>PyQt5信号槽机制(一)</title>
+    <url>/2021/08/15/Qt-2/</url>
+    <content><![CDATA[<h1 id="PyQt5信号槽机制-一"><a href="#PyQt5信号槽机制-一" class="headerlink" title="PyQt5信号槽机制(一)"></a>PyQt5信号槽机制(一)</h1><blockquote>
+<p>信号槽是Qt的核心机制，也是PyQt中编程的通信机制，在Qt中，QObject对象和PyQt中所有继承自QWidget的控件都支持信号机制。当信号发射时，连接的<strong>槽函数</strong>会自动执行。在PyQt5中，信号和槽函数通过<code>object.signal.connect()</code>方法进行连接。<br><span id="more"></span></p>
+</blockquote>
+<h2 id="信号槽（slot）简介"><a href="#信号槽（slot）简介" class="headerlink" title="信号槽（slot）简介"></a>信号槽（slot）简介</h2><p>信号槽特点如下：</p>
+<ol>
+<li>一个信号可以连接多个槽</li>
+<li>一个信号可以连接另一个信号</li>
+<li>信号参数可以是任意Python类型</li>
+<li>一个槽可以监听任意多个信号</li>
+<li>信号与槽之间的连接方式可以是同步连接，也可以是异步连接</li>
+<li>信号与槽的连接可以跨线程</li>
+<li>信号可以断开<br>在编写一个类的时候，要首先定义类的<strong>信号和槽</strong>，在类的信号与槽进行连接，实现对象之间的数据传输。当事件或状态发生改变时，会发出信号，进而出发<strong>执行事件</strong>或信号相关联的<strong>槽函数</strong><br><img src="http://fang-bnn.gitee.io/image_bed/bed/%E6%A7%BD%E4%BF%A1%E5%8F%B7.png" alt="槽信号"></li>
+</ol>
+<h3 id="定义信号"><a href="#定义信号" class="headerlink" title="定义信号"></a>定义信号</h3><p>PyQt内置信号是自动定义的，使用<code>PyQt5.QtCore.pyqtSignal</code>函数可以为QObject对象创建一个信号，使用pyqtSignal函数可以把信号定义为类的属性。pyqtSignal的原型如下<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">pyqtSignal</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, *types, name: <span class="built_in">str</span>= ...</span>) -&gt; <span class="keyword">None</span>:</span> ...</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>type</code>：表示定义信号时参数的类型</li>
+<li><code>name</code>：表示信号的名称，默认使用<strong>类的属性名称</strong><br>使用<code>pyqtSignal</code>函数创建一个或多个重载的未绑定的信号作为类的属性，信号只能在<code>QObject</code>的子类中定义。信号必须在类创建时定义，<strong>不能在类创建后作为类的属性动态添加进来</strong>。使用pyqtSignal函数定义信号时，信号可以传递多各参数，并指定信号传递参数的类型，参数类型是标准的Python数据类型，包括<strong>字符串、日期、布尔类型、数字、列表、字典、元组</strong>。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal, QObject</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StandardItem</span>(<span class="params">QObject</span>):</span></span><br><span class="line">    data_changed = pyqtSignal(<span class="built_in">str</span>, <span class="built_in">str</span>, name=<span class="string">&#x27;dataChanged&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.dataChanged.emit(<span class="string">&quot;old status&quot;</span>,<span class="string">&quot;new status&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="操作信号"><a href="#操作信号" class="headerlink" title="操作信号"></a>操作信号</h3><ul>
+<li><code>connect</code>函数：将信号绑定到槽函数上，<code>QObject.signal.connect(self, slot, type=None, no_receiver_check=False)</code></li>
+<li><code>disconnect</code>函数：将信号解绑，<code>QObject.signal.disconnect(self, slot=None)</code></li>
+<li><code>emit</code>函数：发射信号，<code>emit(self, *args)</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal, QObject</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StandardItem</span>(<span class="params">QObject</span>):</span></span><br><span class="line">    data_changed = pyqtSignal(<span class="built_in">str</span>, <span class="built_in">str</span>, name=<span class="string">&#x27;dataChanged&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.dataChanged.emit(<span class="string">&quot;old status&quot;</span>,<span class="string">&quot;new status&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onDataChanged</span>(<span class="params">self, old, new</span>):</span></span><br><span class="line">        print(old)</span><br><span class="line">        print(new)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = QCoreApplication(sys.argv)</span><br><span class="line">    item = StandardItem()</span><br><span class="line">    item.dataChanged.connect(item.onDataChanged)</span><br><span class="line">    item.update()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br><span class="line"><span class="comment">###############</span></span><br><span class="line"><span class="comment">#####OUTPUT####</span></span><br><span class="line"><span class="comment">###############</span></span><br><span class="line"><span class="comment"># old status</span></span><br><span class="line"><span class="comment"># new status</span></span><br></pre></td></tr></table></figure>
+<h2 id="信号槽与应用"><a href="#信号槽与应用" class="headerlink" title="信号槽与应用"></a>信号槽与应用</h2><h3 id="内置信号与自定义槽函数"><a href="#内置信号与自定义槽函数" class="headerlink" title="内置信号与自定义槽函数"></a>内置信号与自定义槽函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClose)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>这里，<code>button.click()</code>就是一个内置信号，他与onClose槽函数连接。而用户按下的动作即为发射。点击按钮时触发按钮内置的clicked信号，执行绑定的自定义槽函数onClose。</p>
+<h3 id="自定义信号和内置槽函数"><a href="#自定义信号和内置槽函数" class="headerlink" title="自定义信号和内置槽函数"></a>自定义信号和内置槽函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    closeSignal = pyqtSignal()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClose)</span><br><span class="line">        <span class="comment"># 连接自定义信号closeSignal与内置槽函数close</span></span><br><span class="line">        self.closeSignal.connect(self.close)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 发送自定义信号</span></span><br><span class="line">        self.closeSignal.emit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>通过<strong>内置信号</strong><code>click</code>连接到<strong>自定义槽函数</strong>，槽函数中触发<strong>自定义信号</strong>的发射，从而触发<strong>内置槽函数</strong><code>QWidget.close()</code>函数</p>
+<h3 id="自定义信号和自定义槽函数"><a href="#自定义信号和自定义槽函数" class="headerlink" title="自定义信号和自定义槽函数"></a>自定义信号和自定义槽函数</h3><p>结合上述两种方法，大同小异</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> pyqtSignal</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QWidget, QApplication, QPushButton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    closeSignal = pyqtSignal()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, parent=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line">        self.setWindowTitle(<span class="string">&quot;MainWindow Demo&quot;</span>)</span><br><span class="line">        self.resize(<span class="number">800</span>, <span class="number">600</span>)</span><br><span class="line"></span><br><span class="line">        button = QPushButton(<span class="string">&quot;close&quot;</span>, self)</span><br><span class="line">        <span class="comment"># 连接内置信号与自定义槽</span></span><br><span class="line">        button.clicked.connect(self.onClicked)</span><br><span class="line">        <span class="comment"># 连接自定义信号closeSignal与内置槽函数close</span></span><br><span class="line">        self.closeSignal.connect(self.onClose)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClicked</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="comment"># 发送自定义信号</span></span><br><span class="line">        self.closeSignal.emit()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 自定义槽函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">onClose</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = MainWindow()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+<p>参考自:<br><a href="https://blog.51cto.com/u_9291927/2422187">PyQt5快速入门（二）PyQt5信号槽机制</a></p>
+]]></content>
+      <categories>
+        <category>PyQt5</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>PyQt5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PyQt5信号槽机制(二)</title>
     <url>/2021/08/16/Qt-3/</url>
     <content><![CDATA[<h1 id="PyQt5信号槽机制-二"><a href="#PyQt5信号槽机制-二" class="headerlink" title="PyQt5信号槽机制(二)"></a>PyQt5信号槽机制(二)</h1><blockquote>
@@ -755,50 +755,6 @@ D_{G}^{*}(\boldsymbol{x})=\frac{p_{\text {data }}(\boldsymbol{x})}{p_{\text {dat
       <tags>
         <tag>Python</tag>
         <tag>PyQt5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>anchor box</title>
-    <url>/2021/09/18/anchor-box/</url>
-    <content><![CDATA[<h1 id="Anchor-Box"><a href="#Anchor-Box" class="headerlink" title="Anchor Box"></a>Anchor Box</h1><p> Anchor boxex是学习卷积神经网络用于目标识别过程中最重要且最难理解的一个概念。这个概念最初是在Faster R-CNN中提出，之后在诸多优秀的目标识别中得到验证，本文主要参考自<a href="https://zhuanlan.zhihu.com/p/63024247">锚框: Anchor box综述</a></p>
-<span id="more"></span>
-<h2 id="为什么需要anchor-box？"><a href="#为什么需要anchor-box？" class="headerlink" title="为什么需要anchor box？"></a>为什么需要anchor box？</h2><p>先前的目标检测方式主要包括<strong>滑动窗口法</strong>和<strong>区域建议法</strong>，滑动窗口法存在窗口尺寸固定，窗口较多，运算量很大的问题；而区域建议法则是R-CNN的核心思想。通过CNN和RPN生成。通过RPN，生成候选区，然后输入到分类网络中得到最终的分类。</p>
-<h3 id="Anchor-box"><a href="#Anchor-box" class="headerlink" title="Anchor box"></a>Anchor box</h3><p>因为一个窗口只能检测一个目标，而且难以解决多尺度的问题，所以第二代检测中提出了特征金字塔的方法，对窗口进行不同分辨率尺度下的检测，但是这大大增加了计算量。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-bdcdb12acfa1398a907a5e096e634a22_720w.jpg" alt="example">如图，红框中的人和车的中心点都在这个框中，然而按照以前的方法，一个格子能预测一个对象，而且他对于y输出的向量$y=[p_c, b_x, b_y, b_h, b_w, c_1, c_2]^T$，可以检测这三个类别，但是只能二选一，而不能都输出。所以回丢弃一种可能，导致一些对象无法被检测出来。因此引入了anchor box</p>
-<p><img src="https://img-blog.csdnimg.cn/2020020823275943.png" alt="anchor box的形状"><br>所以将上述张量重复两次，得到$y=[p_c, b_x, b_y, b_h, b_w, c_1, c_2, p_c, b_x, b_y, b_h, b_w, c_1, c_2]$。行人一般符合AB1的形状，而汽车符合AB2的形状，所以金标准应该是$y=[1, b_x, b_y, b_h, b_w, 1, 0, 1, b_x, b_y, b_h, b_2, 0, 1]$</p>
-<h3 id="为什么使用不同尺寸和不同的长宽比"><a href="#为什么使用不同尺寸和不同的长宽比" class="headerlink" title="为什么使用不同尺寸和不同的长宽比"></a>为什么使用不同尺寸和不同的长宽比</h3><p>为了得到较大的交并比<br>因为不同物体的形状是不一样的，车子的形状和人的形状应该使用不同长宽比的anchor box，从而提高IOU，那么如何选择anchor box的尺寸呢</p>
-<ul>
-<li>人为经验选取</li>
-<li>k-means聚类</li>
-<li>作为超参数学习</li>
-</ul>
-<h2 id="Anchor-box在各个阶段的使用"><a href="#Anchor-box在各个阶段的使用" class="headerlink" title="Anchor box在各个阶段的使用"></a>Anchor box在各个阶段的使用</h2><h3 id="标注阶段"><a href="#标注阶段" class="headerlink" title="标注阶段"></a>标注阶段</h3><p>在训练阶段，是把anchor box作为训练样本，为了训练样本我们需要为每个锚框标注两类标签：一是锚框所含目标的类别，简称类别；二是真实边界框相对锚框的偏移量，简称偏移量（offset）<br>在目标检测时，我们首先生成多个锚框，然后为每个锚框预测类别以及偏移量，接着根据预测的偏移量调整锚框位置从而得到预测边界框，最后筛选需要输出的预测边界框。</p>
-<p>假设图像中有$n_a$个anchor box，有$n_b$个真实边界框，那么就形成了一个anchor box与真实边界框之间的关系矩阵（一一对应关系）$X \in R^{n_a\times n_b}$，根据这个对应关系找出每个anchor box<strong>交并比</strong>最大的真实边框，然后以真实边框作为anchor box的边框，计算anchor box相对于真实边框的偏移量，如此就标记好了每个anchor box的<strong>标签和偏移量</strong>（<strong>这意味预测得到的anchor box永远无法实现标注的物体边框，而是只能尽量接近标注的物体边框，因为它的金标准也只是anchor box</strong>）</p>
-<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>在经过卷积和池化之后，在feature map层使用anchor box，经过一系列的特征提取，最后针对$3\times 3$网格会得到一个$3\times3\times2\times8$的特征层，其中2是anchor box的个数，用了2个anchor box， 8代表每个anchor box的8维特征向量，分别是4个位置偏移量（$H, W, X, Y$）和3个类别（one-hot），1个anchor box标注（anchor box与真实边框交并比最大则为1，否则为0）</p>
-<p>前向传递得到anchor box之后，找到预先标注的anchor box，然后计算这个anchor box和ground truth之间的损失，训练的主要目的就是训练出用anchor box去拟合真实边框的模型参数.</p>
-<ul>
-<li>损失函数（Faster R-CNN）</li>
-</ul>
-<script type="math/tex; mode=display">
-L(\{p_i\}, \{t_i\}) =\frac{1}{N_{cls}}\sum_iL_{cls}(p_i, p_i^{*})+\lambda\frac{1}{N_{reg}}\sum_ip_i^*L_{reg}(t_i,t_i^*)</script><p>$L<em>{cls}(p_i, p_i^*)$代表类别损失，$L</em>{reg}(t_i, t_i^*)$代表位置损失，$t_i^*$是真实的边框相对于anchor box4个参数化坐标的向量。</p>
-<h3 id="预测阶段"><a href="#预测阶段" class="headerlink" title="预测阶段"></a>预测阶段</h3><p>图像通过前向传递，最终生成多个anchor box，然后根据训练好的模型参数去预测这些anchor box的偏移量和类别，进而得到预测的边框值，由于阈值和anchor box数量选择问题，同一个目标可能会输出多个相似的预测边框，这样不仅不简洁，而且会增加计算量，为了解决这个问题，常常采用非极大值抑制。</p>
-<p>我们常用IOU来代表置信度，什么意思呢？如下图，左图中存在三个框，计算这三个框之间的IOU，得出置信度得分。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/NMS.png" alt="NMS"></p>
-<p>流程如下</p>
-<ol>
-<li>根据置信度得分进行排序</li>
-<li>选择置信度最高的边框添加到最终输出列表中，将其从边框列表中删除</li>
-<li>计算所有边界框的IoU</li>
-<li>删除IoU大于阈值的边界框</li>
-<li>重复上述过程，直到边界列表为空</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nms</span>(<span class="params">bounding_boxes, confidence_score, threshold</span>):</span></span><br><span class="line">    <span class="comment"># If no bounding boxes, return empty list</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(bounding_boxes) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> [], []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Bounding boxes</span></span><br><span class="line">    boxes = np.array(bounding_boxes)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># coordinates of bounding boxes</span></span><br><span class="line">    start_x = boxes[:, <span class="number">0</span>]</span><br><span class="line">    start_y = boxes[:, <span class="number">1</span>]</span><br><span class="line">    end_x = boxes[:, <span class="number">2</span>]</span><br><span class="line">    end_y = boxes[:, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Confidence scores of bounding boxes</span></span><br><span class="line">    score = np.array(confidence_score)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Picked bounding boxes</span></span><br><span class="line">    picked_boxes = []</span><br><span class="line">    picked_score = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Compute areas of bounding boxes</span></span><br><span class="line">    areas = (end_x - start_x + <span class="number">1</span>) * (end_y - start_y + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Sort by confidence score of bounding boxes</span></span><br><span class="line">    order = np.argsort(score)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Iterate bounding boxes</span></span><br><span class="line">    <span class="keyword">while</span> order.size &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># The index of largest confidence score</span></span><br><span class="line">        index = order[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Pick the bounding box with largest confidence score</span></span><br><span class="line">        picked_boxes.append(bounding_boxes[index])</span><br><span class="line">        picked_score.append(confidence_score[index])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute ordinates of intersection-over-union(IOU)</span></span><br><span class="line">        x1 = np.maximum(start_x[index], start_x[order[:-<span class="number">1</span>]])</span><br><span class="line">        x2 = np.minimum(end_x[index], end_x[order[:-<span class="number">1</span>]])</span><br><span class="line">        y1 = np.maximum(start_y[index], start_y[order[:-<span class="number">1</span>]])</span><br><span class="line">        y2 = np.minimum(end_y[index], end_y[order[:-<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute areas of intersection-over-union</span></span><br><span class="line">        w = np.maximum(<span class="number">0.0</span>, x2 - x1 + <span class="number">1</span>)</span><br><span class="line">        h = np.maximum(<span class="number">0.0</span>, y2 - y1 + <span class="number">1</span>)</span><br><span class="line">        intersection = w * h</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute the ratio between intersection and union</span></span><br><span class="line">        ratio = intersection / (areas[index] + areas[order[:-<span class="number">1</span>]] - intersection)</span><br><span class="line"></span><br><span class="line">        left = np.where(ratio &lt; threshold)</span><br><span class="line">        order = order[left]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> picked_boxes, picked_score</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Yolo</category>
-      </categories>
-      <tags>
-        <tag>Deep learning</tag>
-        <tag>Yolo</tag>
-        <tag>Yolox</tag>
       </tags>
   </entry>
   <entry>
@@ -918,6 +874,79 @@ L(\{p_i\}, \{t_i\}) =\frac{1}{N_{cls}}\sum_iL_{cls}(p_i, p_i^{*})+\lambda\frac{1
       </tags>
   </entry>
   <entry>
+    <title>anchor box</title>
+    <url>/2021/09/18/anchor-box/</url>
+    <content><![CDATA[<h1 id="Anchor-Box"><a href="#Anchor-Box" class="headerlink" title="Anchor Box"></a>Anchor Box</h1><p> Anchor boxex是学习卷积神经网络用于目标识别过程中最重要且最难理解的一个概念。这个概念最初是在Faster R-CNN中提出，之后在诸多优秀的目标识别中得到验证，本文主要参考自<a href="https://zhuanlan.zhihu.com/p/63024247">锚框: Anchor box综述</a></p>
+<span id="more"></span>
+<h2 id="为什么需要anchor-box？"><a href="#为什么需要anchor-box？" class="headerlink" title="为什么需要anchor box？"></a>为什么需要anchor box？</h2><p>先前的目标检测方式主要包括<strong>滑动窗口法</strong>和<strong>区域建议法</strong>，滑动窗口法存在窗口尺寸固定，窗口较多，运算量很大的问题；而区域建议法则是R-CNN的核心思想。通过CNN和RPN生成。通过RPN，生成候选区，然后输入到分类网络中得到最终的分类。</p>
+<h3 id="Anchor-box"><a href="#Anchor-box" class="headerlink" title="Anchor box"></a>Anchor box</h3><p>因为一个窗口只能检测一个目标，而且难以解决多尺度的问题，所以第二代检测中提出了特征金字塔的方法，对窗口进行不同分辨率尺度下的检测，但是这大大增加了计算量。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-bdcdb12acfa1398a907a5e096e634a22_720w.jpg" alt="example">如图，红框中的人和车的中心点都在这个框中，然而按照以前的方法，一个格子能预测一个对象，而且他对于y输出的向量$y=[p_c, b_x, b_y, b_h, b_w, c_1, c_2]^T$，可以检测这三个类别，但是只能二选一，而不能都输出。所以回丢弃一种可能，导致一些对象无法被检测出来。因此引入了anchor box</p>
+<p><img src="https://img-blog.csdnimg.cn/2020020823275943.png" alt="anchor box的形状"><br>所以将上述张量重复两次，得到$y=[p_c, b_x, b_y, b_h, b_w, c_1, c_2, p_c, b_x, b_y, b_h, b_w, c_1, c_2]$。行人一般符合AB1的形状，而汽车符合AB2的形状，所以金标准应该是$y=[1, b_x, b_y, b_h, b_w, 1, 0, 1, b_x, b_y, b_h, b_2, 0, 1]$</p>
+<h3 id="为什么使用不同尺寸和不同的长宽比"><a href="#为什么使用不同尺寸和不同的长宽比" class="headerlink" title="为什么使用不同尺寸和不同的长宽比"></a>为什么使用不同尺寸和不同的长宽比</h3><p>为了得到较大的交并比<br>因为不同物体的形状是不一样的，车子的形状和人的形状应该使用不同长宽比的anchor box，从而提高IOU，那么如何选择anchor box的尺寸呢</p>
+<ul>
+<li>人为经验选取</li>
+<li>k-means聚类</li>
+<li>作为超参数学习</li>
+</ul>
+<h2 id="Anchor-box在各个阶段的使用"><a href="#Anchor-box在各个阶段的使用" class="headerlink" title="Anchor box在各个阶段的使用"></a>Anchor box在各个阶段的使用</h2><h3 id="标注阶段"><a href="#标注阶段" class="headerlink" title="标注阶段"></a>标注阶段</h3><p>在训练阶段，是把anchor box作为训练样本，为了训练样本我们需要为每个锚框标注两类标签：一是锚框所含目标的类别，简称类别；二是真实边界框相对锚框的偏移量，简称偏移量（offset）<br>在目标检测时，我们首先生成多个锚框，然后为每个锚框预测类别以及偏移量，接着根据预测的偏移量调整锚框位置从而得到预测边界框，最后筛选需要输出的预测边界框。</p>
+<p>假设图像中有$n_a$个anchor box，有$n_b$个真实边界框，那么就形成了一个anchor box与真实边界框之间的关系矩阵（一一对应关系）$X \in R^{n_a\times n_b}$，根据这个对应关系找出每个anchor box<strong>交并比</strong>最大的真实边框，然后以真实边框作为anchor box的边框，计算anchor box相对于真实边框的偏移量，如此就标记好了每个anchor box的<strong>标签和偏移量</strong>（<strong>这意味预测得到的anchor box永远无法实现标注的物体边框，而是只能尽量接近标注的物体边框，因为它的金标准也只是anchor box</strong>）</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>在经过卷积和池化之后，在feature map层使用anchor box，经过一系列的特征提取，最后针对$3\times 3$网格会得到一个$3\times3\times2\times8$的特征层，其中2是anchor box的个数，用了2个anchor box， 8代表每个anchor box的8维特征向量，分别是4个位置偏移量（$H, W, X, Y$）和3个类别（one-hot），1个anchor box标注（anchor box与真实边框交并比最大则为1，否则为0）</p>
+<p>前向传递得到anchor box之后，找到预先标注的anchor box，然后计算这个anchor box和ground truth之间的损失，训练的主要目的就是训练出用anchor box去拟合真实边框的模型参数.</p>
+<ul>
+<li>损失函数（Faster R-CNN）</li>
+</ul>
+<script type="math/tex; mode=display">
+L(\{p_i\}, \{t_i\}) =\frac{1}{N_{cls}}\sum_iL_{cls}(p_i, p_i^{*})+\lambda\frac{1}{N_{reg}}\sum_ip_i^*L_{reg}(t_i,t_i^*)</script><p>$L<em>{cls}(p_i, p_i^*)$代表类别损失，$L</em>{reg}(t_i, t_i^*)$代表位置损失，$t_i^*$是真实的边框相对于anchor box4个参数化坐标的向量。</p>
+<h3 id="预测阶段"><a href="#预测阶段" class="headerlink" title="预测阶段"></a>预测阶段</h3><p>图像通过前向传递，最终生成多个anchor box，然后根据训练好的模型参数去预测这些anchor box的偏移量和类别，进而得到预测的边框值，由于阈值和anchor box数量选择问题，同一个目标可能会输出多个相似的预测边框，这样不仅不简洁，而且会增加计算量，为了解决这个问题，常常采用非极大值抑制。</p>
+<p>我们常用IOU来代表置信度，什么意思呢？如下图，左图中存在三个框，计算这三个框之间的IOU，得出置信度得分。<br><img src="http://fang-bnn.gitee.io/image_bed/bed/NMS.png" alt="NMS"></p>
+<p>流程如下</p>
+<ol>
+<li>根据置信度得分进行排序</li>
+<li>选择置信度最高的边框添加到最终输出列表中，将其从边框列表中删除</li>
+<li>计算所有边界框的IoU</li>
+<li>删除IoU大于阈值的边界框</li>
+<li>重复上述过程，直到边界列表为空</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nms</span>(<span class="params">bounding_boxes, confidence_score, threshold</span>):</span></span><br><span class="line">    <span class="comment"># If no bounding boxes, return empty list</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(bounding_boxes) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> [], []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Bounding boxes</span></span><br><span class="line">    boxes = np.array(bounding_boxes)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># coordinates of bounding boxes</span></span><br><span class="line">    start_x = boxes[:, <span class="number">0</span>]</span><br><span class="line">    start_y = boxes[:, <span class="number">1</span>]</span><br><span class="line">    end_x = boxes[:, <span class="number">2</span>]</span><br><span class="line">    end_y = boxes[:, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Confidence scores of bounding boxes</span></span><br><span class="line">    score = np.array(confidence_score)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Picked bounding boxes</span></span><br><span class="line">    picked_boxes = []</span><br><span class="line">    picked_score = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Compute areas of bounding boxes</span></span><br><span class="line">    areas = (end_x - start_x + <span class="number">1</span>) * (end_y - start_y + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Sort by confidence score of bounding boxes</span></span><br><span class="line">    order = np.argsort(score)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Iterate bounding boxes</span></span><br><span class="line">    <span class="keyword">while</span> order.size &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># The index of largest confidence score</span></span><br><span class="line">        index = order[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Pick the bounding box with largest confidence score</span></span><br><span class="line">        picked_boxes.append(bounding_boxes[index])</span><br><span class="line">        picked_score.append(confidence_score[index])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute ordinates of intersection-over-union(IOU)</span></span><br><span class="line">        x1 = np.maximum(start_x[index], start_x[order[:-<span class="number">1</span>]])</span><br><span class="line">        x2 = np.minimum(end_x[index], end_x[order[:-<span class="number">1</span>]])</span><br><span class="line">        y1 = np.maximum(start_y[index], start_y[order[:-<span class="number">1</span>]])</span><br><span class="line">        y2 = np.minimum(end_y[index], end_y[order[:-<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute areas of intersection-over-union</span></span><br><span class="line">        w = np.maximum(<span class="number">0.0</span>, x2 - x1 + <span class="number">1</span>)</span><br><span class="line">        h = np.maximum(<span class="number">0.0</span>, y2 - y1 + <span class="number">1</span>)</span><br><span class="line">        intersection = w * h</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Compute the ratio between intersection and union</span></span><br><span class="line">        ratio = intersection / (areas[index] + areas[order[:-<span class="number">1</span>]] - intersection)</span><br><span class="line"></span><br><span class="line">        left = np.where(ratio &lt; threshold)</span><br><span class="line">        order = order[left]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> picked_boxes, picked_score</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Yolo</category>
+      </categories>
+      <tags>
+        <tag>Deep learning</tag>
+        <tag>Yolo</tag>
+        <tag>Yolox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>log20210812</title>
+    <url>/2021/08/12/log-20210812/</url>
+    <content><![CDATA[<h1 id="20210812"><a href="#20210812" class="headerlink" title="20210812"></a>20210812</h1><blockquote>
+<p>本博客于2021年2月25日搭建，但由于琐事（主次不分？LOL），未经经营数月，辗转于本地笔记、Notion、博客园等，最后考虑到长期经营的稳定性等，还是选择自己搭建博客。<br><span id="more"></span></p>
+</blockquote>
+<p>本次博客搭建更新了以下方面内容：</p>
+<ul>
+<li>购买域名</li>
+<li>优化主题</li>
+</ul>
+<h2 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h2><p>选了阿里云（<a href="https://cn.aliyun.com/">阿里云网址</a>）的域名，直接支付宝登陆。可在域名-解析处进行设置。</p>
+<p>设置图片如下(ip用ping获取github.io)：<br><img src="http://fang-bnn.gitee.io/image_bed/bed/Snipaste_2021-08-12_15-36-35.png" alt="阿里云"></p>
+<p>随后在github对应仓库下进入Setting-Pages，在custom domain中输入注册的域名（建议不要加www）。点击save（我没有选择强制HTTPS），等待一段时间，进入域名即可定向到github建立的博客。</p>
+<h2 id="优化主题"><a href="#优化主题" class="headerlink" title="优化主题"></a>优化主题</h2><p>进入本地博客文件夹，进入文件夹下的themes文件夹，右键，git bash here，输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/levblanc/hexo-theme-aero-dual.git</span><br></pre></td></tr></table></figure>
+<p>这里会遇到一个奇怪的小问题：无法进行<code>clone</code>，可能是因为我不小心在复制网址的时候按下了<code>Ctrl+c</code>，导致了未知字符的出现，按下<code>Insert</code>即可。</p>
+<p>进入<code>_config.yml</code>文件夹，将<code>themes</code>改成对应的主题文件夹名称，最后执行以下命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><br>但我一般不执行<code>hexo clean</code>,若执行，则会使得custom domain的设置失效。</p>
+<h2 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h2><p>感谢大佬给出的指南，背景图片真是太难搞了。</p>
+<p><a href="https://www.jianshu.com/p/9f794db64f42">更换主题</a><br><a href="https://tding.top/archives/42c38b10.html">主题配置</a><br><a href="https://blog.csdn.net/weixin_46106283/article/details/109880961">背景图片</a><br><a href="https://www.wolfdan.cn/Hexo-Next-Gemini%E4%B8%BB%E9%A2%98%E9%80%8F%E6%98%8E%E5%8C%96%E4%BB%A5%E5%8F%8A%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E7%9A%84%E6%9B%B4%E6%94%B9/">背景透明</a></p>
+]]></content>
+      <categories>
+        <category>log</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>log20210815</title>
     <url>/2021/08/15/log-20210815/</url>
     <content><![CDATA[<h1 id="20210815"><a href="#20210815" class="headerlink" title="20210815"></a>20210815</h1><blockquote>
@@ -1023,32 +1052,23 @@ L(\{p_i\}, \{t_i\}) =\frac{1}{N_{cls}}\sum_iL_{cls}(p_i, p_i^{*})+\lambda\frac{1
       </tags>
   </entry>
   <entry>
-    <title>log20210812</title>
-    <url>/2021/08/12/log-20210812/</url>
-    <content><![CDATA[<h1 id="20210812"><a href="#20210812" class="headerlink" title="20210812"></a>20210812</h1><blockquote>
-<p>本博客于2021年2月25日搭建，但由于琐事（主次不分？LOL），未经经营数月，辗转于本地笔记、Notion、博客园等，最后考虑到长期经营的稳定性等，还是选择自己搭建博客。<br><span id="more"></span></p>
-</blockquote>
-<p>本次博客搭建更新了以下方面内容：</p>
-<ul>
-<li>购买域名</li>
-<li>优化主题</li>
+    <title>左图右史</title>
+    <url>/2022/02/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="左图右史——博客笔记汇总"><a href="#左图右史——博客笔记汇总" class="headerlink" title="左图右史——博客笔记汇总"></a>左图右史——博客笔记汇总</h1><p>好用的笔记和博客汇收集。<br><span id="more"></span></p>
+<h2 id="深度学习相关"><a href="#深度学习相关" class="headerlink" title="深度学习相关"></a>深度学习相关</h2><ul>
+<li><strong>反卷积</strong>：对反卷积Deconvolution的理解，文章从卷积出发讲解反卷积的概念，随后介绍了反卷积的计算，包括能够除尽和不能除尽两种情况。<a href="https://www.cnblogs.com/shine-lee/p/11559825.html">笔记地址</a></li>
+<li><strong>Binary Cross Entropy</strong>：文章介绍了Binary Cross Entropy，通过简单的可视化例子，比较清楚地讲解了Binary Cross Entropy地原理。<a href="https://zhuanlan.zhihu.com/p/89391305">笔记地址</a></li>
 </ul>
-<h2 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h2><p>选了阿里云（<a href="https://cn.aliyun.com/">阿里云网址</a>）的域名，直接支付宝登陆。可在域名-解析处进行设置。</p>
-<p>设置图片如下(ip用ping获取github.io)：<br><img src="http://fang-bnn.gitee.io/image_bed/bed/Snipaste_2021-08-12_15-36-35.png" alt="阿里云"></p>
-<p>随后在github对应仓库下进入Setting-Pages，在custom domain中输入注册的域名（建议不要加www）。点击save（我没有选择强制HTTPS），等待一段时间，进入域名即可定向到github建立的博客。</p>
-<h2 id="优化主题"><a href="#优化主题" class="headerlink" title="优化主题"></a>优化主题</h2><p>进入本地博客文件夹，进入文件夹下的themes文件夹，右键，git bash here，输入</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/levblanc/hexo-theme-aero-dual.git</span><br></pre></td></tr></table></figure>
-<p>这里会遇到一个奇怪的小问题：无法进行<code>clone</code>，可能是因为我不小心在复制网址的时候按下了<code>Ctrl+c</code>，导致了未知字符的出现，按下<code>Insert</code>即可。</p>
-<p>进入<code>_config.yml</code>文件夹，将<code>themes</code>改成对应的主题文件夹名称，最后执行以下命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><br>但我一般不执行<code>hexo clean</code>,若执行，则会使得custom domain的设置失效。</p>
-<h2 id="参考网址"><a href="#参考网址" class="headerlink" title="参考网址"></a>参考网址</h2><p>感谢大佬给出的指南，背景图片真是太难搞了。</p>
-<p><a href="https://www.jianshu.com/p/9f794db64f42">更换主题</a><br><a href="https://tding.top/archives/42c38b10.html">主题配置</a><br><a href="https://blog.csdn.net/weixin_46106283/article/details/109880961">背景图片</a><br><a href="https://www.wolfdan.cn/Hexo-Next-Gemini%E4%B8%BB%E9%A2%98%E9%80%8F%E6%98%8E%E5%8C%96%E4%BB%A5%E5%8F%8A%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E7%9A%84%E6%9B%B4%E6%94%B9/">背景透明</a></p>
+<h2 id="Python相关"><a href="#Python相关" class="headerlink" title="Python相关"></a>Python相关</h2><ul>
+<li><strong>Python修饰器</strong>：用较简单的例子讲解了修饰器的原理，即参数为函数的函数，并从函数扩展到修饰器类。<a href="https://zhuanlan.zhihu.com/p/51035016">笔记地址</a></li>
+<li><strong>argparse包</strong>：非常全面地讲解了<code>argparse</code>的使用方法。<a href="https://www.cnblogs.com/gmpy/p/11796416.html">笔记地址</a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>log</category>
+        <category>Daily</category>
       </categories>
       <tags>
-        <tag>log</tag>
-        <tag>blog</tag>
+        <tag>Daily</tag>
       </tags>
   </entry>
   <entry>
@@ -1074,25 +1094,6 @@ L(\{p_i\}, \{t_i\}) =\frac{1}{N_{cls}}\sum_iL_{cls}(p_i, p_i^{*})+\lambda\frac{1
       <tags>
         <tag>Linux</tag>
         <tag>驱动</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>好的博客笔记</title>
-    <url>/2022/02/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="好的博客和笔记汇总"><a href="#好的博客和笔记汇总" class="headerlink" title="好的博客和笔记汇总"></a>好的博客和笔记汇总</h1><p>日常中看到的好用的笔记和博客汇总帖，感谢各路大神辛苦的码字，才使得我们能够轻松地获得许多原本需要更多精力才能获取的知识。<br><span id="more"></span></p>
-<h2 id="深度学习相关"><a href="#深度学习相关" class="headerlink" title="深度学习相关"></a>深度学习相关</h2><ul>
-<li><strong>反卷积</strong>：对反卷积Deconvolution的理解，文章从卷积出发讲解反卷积的概念，随后介绍了反卷积的计算，包括能够除尽和不能除尽两种情况。<a href="https://www.cnblogs.com/shine-lee/p/11559825.html">博客地址</a></li>
-<li><strong>Binary Cross Entropy</strong>：文章介绍了Binary Cross Entropy，通过简单的可视化例子，比较清楚地讲解了Binary Cross Entropy地原理，随后又简单地介绍了Cross Entroy和 <a href="https://zhuanlan.zhihu.com/p/89391305">博客地址</a></li>
-</ul>
-<h2 id="Python相关"><a href="#Python相关" class="headerlink" title="Python相关"></a>Python相关</h2><ul>
-<li><strong>Python修饰器</strong>：用较简单的例子讲解了修饰器的原理，即参数为函数的函数，并从函数扩展到修饰器类。<a href="https://zhuanlan.zhihu.com/p/51035016">博客地址</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Daily</category>
-      </categories>
-      <tags>
-        <tag>Daily</tag>
       </tags>
   </entry>
 </search>
